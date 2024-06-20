@@ -7,17 +7,29 @@ if(wxWidgets_USE_FILE) # not defined in CONFIG mode
     include(${wxWidgets_USE_FILE})
 endif()
 
-if(NOT raylib_FOUND)
-    include(FetchContent)
-    FetchContent_Declare(
-        raylib
-        GIT_REPOSITORY https://github.com/raysan5/raylib.git
-        GIT_TAG 3.7.0
-    )
-    FetchContent_MakeAvailable(raylib)
-else()
-    find_package(raylib REQUIRED)
+set(RAYLIB_VERSION 5.0)
+find_package(raylib ${RAYLIB_VERSION} QUIET) # QUIET or REQUIRED
+if (NOT raylib_FOUND) # If there's none, fetch and build raylib
+  include(FetchContent)
+  FetchContent_Declare(
+    raylib
+    DOWNLOAD_EXTRACT_TIMESTAMP OFF
+    URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
+  )
+  FetchContent_GetProperties(raylib)
+  if (NOT raylib_POPULATED) # Have we downloaded raylib yet?
+    set(FETCHCONTENT_QUIET NO)
+    FetchContent_Populate(raylib)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
+    add_subdirectory(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
+  endif()
 endif()
 
+
+
 add_executable(app main.cpp)
-target_link_libraries(app fmt::fmt ${wxWidgets_LIBRARIES} raylib)
+target_link_libraries(app 
+                    fmt::fmt 
+                    ${wxWidgets_LIBRARIES} 
+                     raylib
+                    )
