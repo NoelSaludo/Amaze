@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 3.10)
 
 project(app)
 find_package(fmt REQUIRED)
+if(NOT fmt_FOUND)
+  include(FetchContent)
+  FetchContent_Declare(
+    fmt
+    GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+    GIT_TAG 10.2.1
+  )
+  FetchContent_MakeAvailable(fmt)
+endif()
 
 
 set(RAYLIB_VERSION 5.0)
