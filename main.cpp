@@ -2,7 +2,7 @@
 #include <fmt/core.h>
 #include <raylib.h>
 #define RAYGUI_IMPLEMENTATION
-#include <raygui.h>
+#include "raygui.h"
 
 
 int main() {

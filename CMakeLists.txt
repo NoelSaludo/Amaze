@@ -21,21 +21,10 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
     add_subdirectory(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
   endif()
 endif()
-include(FetchContent)
-FetchContent_Declare(
-  raygui
-  GIT_REPOSITORY https://github.com/raysan5/raygui.git
-  GIT_TAG 4.0
-)
-FetchContent_GetProperties(raygui)
-if(NOT raygui_POPULATED)
-  FetchContent_Populate(raygui)
-  add_library(raygui INTERFACE)
-  target_include_directories(raygui INTERFACE ${raygui_SOURCE_DIR}/src)
-endif()
 
 
-add_executable(app main.cpp)
+
+add_executable(app main.cpp raygui.h)
 target_link_libraries(app PRIVATE
                     fmt::fmt 
                      raylib
