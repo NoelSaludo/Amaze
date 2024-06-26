@@ -1,16 +1,18 @@
 #include <string>
-class graph{
+#include <vector>
+class Graph{
     public:
-        graph(std::string);
+        Graph(std::string);
         void PrintGraph();
-        void DFS(const char &);
+        void DFS(const std::string &);
         void LoadGraph(std::string&);
         
     private:
         int size;
-        int **Matrix;
-        char *Data;
-        void AddData(int,char);
+        std::vector<std::vector<int>> Matrix;
+        std::vector<std::string> Data;
+        void loadMatrixTemp();
+        void AddData(std::string);
         void AddEdge(int,int);
         void DFSutil(int,bool*);
 

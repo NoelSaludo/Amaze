@@ -6,44 +6,30 @@
 
 using namespace std;
 
-graph::graph(std::string file)
+Graph::Graph(string file)
 {
-    char *Dataptr = &Data[0];
-    size = strlen(Dataptr) - 1;
-    Data = new char[size];
-    Matrix = new int *[size];
-    for (int i = 0; i < size; i++)
-    {
-        Matrix[i] = new int[size];
-    }
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
-            Matrix[i][j] = 0;
-        }
-    }
     LoadGraph(file);
 }
 
-void graph::AddData(int Vertex, char data)
+void Graph::AddData(string data)
 {
-    if (0 <= Vertex < size)
-    {
-        this->Data[Vertex] = data;
-    }
+    Data.push_back(data);
 }
 
-void graph::AddEdge(int x, int y)
+void Graph::AddEdge(int x, int y)
 {
     if (0 <= x && x < size && 0 <= y && y < size)
     {
         this->Matrix[x][y] = 1;
         this->Matrix[y][x] = 1;
     }
+    else
+    {
+        cout << "Invalid edge" << endl;
+    }
 }
 
-void graph::DFSutil(int start, bool *visited)
+void Graph::DFSutil(int start, bool *visited)
 {
     visited[start] = true;
     cout << Data[start] << " ";
@@ -56,16 +42,16 @@ void graph::DFSutil(int start, bool *visited)
     }
 }
 
-void graph::DFS(const char &start)
+void Graph::DFS(const string &start)
 {
     bool visited[size];
     for (int i = 0; i < size; i++)
         visited[i] = false;
-    char *startIndex = find(Data, Data + size, start);
-    DFSutil(startIndex - Data, visited);
+    int indexOfData = find(Data.begin(), Data.end(), start) - Data.begin();
+    DFSutil(indexOfData, visited);
 }
 
-void graph::LoadGraph(string &file)
+void Graph::LoadGraph(string &file)
 {
     ifstream fin(file);
     if (!fin)
@@ -93,13 +79,15 @@ void graph::LoadGraph(string &file)
             {
                 if (lines[j] == "#edge")
                     break;
-                char data = lines[j][0];
-                this->AddData(j - 1, data);
+                string data = lines[j];
+                this->AddData(data);
             }
+            this->size = Data.size();
             continue;
         }
         if (lines[i] == "#edge")
         {
+            this->loadMatrixTemp();
             for (int j = i + 1; j < lines.size(); j++)
             {
                 int x = lines[j][0] - '0';
@@ -109,7 +97,19 @@ void graph::LoadGraph(string &file)
         }
     }
 }
-void graph::PrintGraph()
+void Graph::loadMatrixTemp()
+{
+    for(int i = 0; i < size; i++)
+    {
+        vector<int> temp;
+        for(int j = 0; j < size; j++)
+        {
+            temp.push_back(0);
+        }
+        Matrix.push_back(temp);
+    }
+}
+void Graph::PrintGraph()
 {
     cout << "  ";
     for (int i = 0; i < size; i++)
