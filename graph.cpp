@@ -1,19 +1,16 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream>
-#include <string>
+#include <cstring>
 #include "graph.h"
-#include <fmt/core.h>
 
-using namespace std; 
-using namespace fmt;
+using namespace std;
 
 graph::graph(std::string file)
 {
     char *Dataptr = &Data[0];
     size = strlen(Dataptr) - 1;
     Data = new char[size];
-    SeedData(file);  
     Matrix = new int *[size];
     for (int i = 0; i < size; i++)
     {
@@ -26,6 +23,7 @@ graph::graph(std::string file)
             Matrix[i][j] = 0;
         }
     }
+    LoadGraph(file);
 }
 
 void graph::AddData(int Vertex, char data)
@@ -36,11 +34,12 @@ void graph::AddData(int Vertex, char data)
     }
 }
 
-void graph::AddEdge(int x, int y,int weight)
+void graph::AddEdge(int x, int y)
 {
-    if (0 <= x < size && 0 <= y < size)
+    if (0 <= x && x < size && 0 <= y && y < size)
     {
-        this->Matrix[x][y] = weight;
+        this->Matrix[x][y] = 1;
+        this->Matrix[y][x] = 1;
     }
 }
 
@@ -60,41 +59,55 @@ void graph::DFSutil(int start, bool *visited)
 void graph::DFS(const char &start)
 {
     bool visited[size];
-    for(int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
         visited[i] = false;
-    char* startIndex = find(Data,Data+size,start);
-    DFSutil(startIndex-Data,visited);
-
+    char *startIndex = find(Data, Data + size, start);
+    DFSutil(startIndex - Data, visited);
 }
 
-void graph::SeedData(string& file)
+void graph::LoadGraph(string &file)
 {
     ifstream fin(file);
-    if(!fin)
+    if (!fin)
     {
         cout << "File not found" << endl;
         return;
     }
-    if(!fin.is_open())
+    if (!fin.is_open())
     {
         cout << "File not opened successfully" << endl;
     }
     vector<string> lines;
-    while(!fin.eof())
+    while (!fin.eof())
     {
         string line;
-        getline(fin,line);
+        getline(fin, line);
         lines.push_back(line);
     }
     fin.close();
-    for(string line: lines)
+    for (int i = 0; i < lines.size(); i++)
     {
-        int x = line[0] - '0';
-        char y = line[2];
-        this->AddData(x,y);
+        if (lines[i] == "#data")
+        {
+            for (int j = i + 1; j < lines.size(); j++)
+            {
+                if (lines[j] == "#edge")
+                    break;
+                char data = lines[j][0];
+                this->AddData(j - 1, data);
+            }
+            continue;
+        }
+        if (lines[i] == "#edge")
+        {
+            for (int j = i + 1; j < lines.size(); j++)
+            {
+                int x = lines[j][0] - '0';
+                int y = lines[j][2] - '0';
+                this->AddEdge(x, y);
+            }
+        }
     }
-
-
 }
 void graph::PrintGraph()
 {
