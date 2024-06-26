@@ -8,12 +8,13 @@ class Graph{
         void LoadGraph(std::string&);
         
     private:
-        int size;
+        u_int size;
         std::vector<std::vector<int>> Matrix;
         std::vector<std::string> Data;
         void loadMatrixTemp();
         void AddData(std::string);
         void AddEdge(int,int);
         void DFSutil(int,bool*);
+        void ReadLines(vector<string>);
 
 };

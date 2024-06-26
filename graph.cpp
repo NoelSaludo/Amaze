@@ -54,6 +54,7 @@ void Graph::DFS(const string &start)
 void Graph::LoadGraph(string &file)
 {
     ifstream fin(file);
+    vector<string> lines;
     if (!fin)
     {
         cout << "File not found" << endl;
@@ -63,7 +64,6 @@ void Graph::LoadGraph(string &file)
     {
         cout << "File not opened successfully" << endl;
     }
-    vector<string> lines;
     while (!fin.eof())
     {
         string line;
@@ -71,6 +71,10 @@ void Graph::LoadGraph(string &file)
         lines.push_back(line);
     }
     fin.close();
+    ReadLines(lines);
+}
+void Graph::ReadLines(vector<string> lines)
+{
     for (int i = 0; i < lines.size(); i++)
     {
         if (lines[i] == "#data")
@@ -99,10 +103,10 @@ void Graph::LoadGraph(string &file)
 }
 void Graph::loadMatrixTemp()
 {
-    for(int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
         vector<int> temp;
-        for(int j = 0; j < size; j++)
+        for (int j = 0; j < size; j++)
         {
             temp.push_back(0);
         }
