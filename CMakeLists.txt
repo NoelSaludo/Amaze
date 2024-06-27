@@ -31,12 +31,12 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
   endif()
 endif()
 
+set(SOURCE main.cpp graph.h graph.cpp)
+set(RAYGUI_HEADER raygui.h)
 
-
-add_executable(app main.cpp raygui.h)
+add_executable(app ${SOURCE} ${RAYGUI_HEADER})
 target_link_libraries(app PRIVATE
                     fmt::fmt 
                      raylib
-                     raygui
                     )
 include(CPack)

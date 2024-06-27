@@ -1,7 +1,7 @@
+#define RAYGUI_IMPLEMENTATION
 #include <iostream>
 #include <fmt/core.h>
 #include <raylib.h>
-#define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
 

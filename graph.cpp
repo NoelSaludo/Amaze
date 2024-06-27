@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <cstring>
+#include <vector>
 #include "graph.h"
 
 using namespace std;
@@ -71,7 +72,7 @@ void Graph::LoadGraph(string &file)
         lines.push_back(line);
     }
     fin.close();
-    ReadLines(lines);
+    this->ReadLines(lines);
 }
 void Graph::ReadLines(vector<string> lines)
 {

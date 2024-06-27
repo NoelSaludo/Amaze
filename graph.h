@@ -15,6 +15,6 @@ class Graph{
         void AddData(std::string);
         void AddEdge(int,int);
         void DFSutil(int,bool*);
-        void ReadLines(vector<string>);
+        void ReadLines(std::vector<std::string>);
 
 };
