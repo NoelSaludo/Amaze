@@ -39,3 +39,4 @@ target_link_libraries(app PRIVATE
                      raylib
                      raygui
                     )
+include(CPack)
