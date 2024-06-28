@@ -4,7 +4,6 @@ class Graph{
     public:
         Graph(std::string);
         void PrintGraph();
-        void DFS(const std::string &);
         void LoadGraph(std::string&);
         
     private:
@@ -14,7 +13,6 @@ class Graph{
         void loadMatrixTemp();
         void AddData(std::string);
         void AddEdge(int,int);
-        void DFSutil(int,bool*);
         void ReadLines(std::vector<std::string>);
 
 };

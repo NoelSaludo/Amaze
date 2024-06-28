@@ -30,27 +30,7 @@ void Graph::AddEdge(int x, int y)
     }
 }
 
-void Graph::DFSutil(int start, bool *visited)
-{
-    visited[start] = true;
-    cout << Data[start] << " ";
-    for (int i = 0; i < size; i++)
-    {
-        if (Matrix[start][i] != 0 && !visited[i])
-        {
-            DFSutil(i, visited);
-        }
-    }
-}
 
-void Graph::DFS(const string &start)
-{
-    bool visited[size];
-    for (int i = 0; i < size; i++)
-        visited[i] = false;
-    int indexOfData = find(Data.begin(), Data.end(), start) - Data.begin();
-    DFSutil(indexOfData, visited);
-}
 
 void Graph::LoadGraph(string &file)
 {
