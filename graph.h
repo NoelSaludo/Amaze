@@ -1,20 +1,26 @@
 #include <string>
 #include <vector>
-class Graph{
+
+#ifndef GRAPH_H_
+#define GRAPH_H_
+class Graph
+{
     public:
         Graph(std::string);
         void PrintGraph();
         void LoadGraph(std::string&);
         std::string Start;
         std::string End;
+        std::vector<std::string> Data;
+        std::vector<std::vector<int>> Matrix;
+        int GetSize() const;
         
     private:
-        u_int size;
-        std::vector<std::vector<int>> Matrix;
-        std::vector<std::string> Data;
+        int size;
         void loadMatrixTemp();
         void AddData(std::string);
         void AddEdge(int,int);
         void ReadLines(std::vector<std::string>);
 
 };
+#endif

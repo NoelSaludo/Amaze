@@ -72,9 +72,12 @@ void Graph::ReadLines(vector<string> lines)
         }
         if (lines[i] == "#edge")
         {
+            
             this->loadMatrixTemp();
             for (int j = i + 1; j < lines.size(); j++)
             {
+                if(lines[j] == "#start")
+                    break;
                 int x = lines[j][0] - '0';
                 int y = lines[j][2] - '0';
                 this->AddEdge(x, y);
@@ -119,4 +122,9 @@ void Graph::PrintGraph()
         }
         cout << endl; // theodore
     }
+}
+
+int Graph::GetSize() const
+{
+    return size;
 }
