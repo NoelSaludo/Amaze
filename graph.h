@@ -5,6 +5,8 @@ class Graph{
         Graph(std::string);
         void PrintGraph();
         void LoadGraph(std::string&);
+        std::string Start;
+        std::string End;
         
     private:
         u_int size;

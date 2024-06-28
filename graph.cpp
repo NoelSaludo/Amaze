@@ -80,6 +80,14 @@ void Graph::ReadLines(vector<string> lines)
                 this->AddEdge(x, y);
             }
         }
+        if(lines[i] == "#start")
+        {
+            this->Start = lines[i+1];
+        }
+        if(lines[i] == "#end")
+        {
+            this->End = lines[i+1];
+        }
     }
 }
 void Graph::loadMatrixTemp()
