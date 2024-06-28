@@ -128,6 +128,6 @@ void Graph::PrintGraph()
         {
             cout << Matrix[i][j] << " ";
         }
-        cout << endl;
+        cout << endl; // theodore
     }
 }
