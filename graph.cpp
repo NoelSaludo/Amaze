@@ -78,8 +78,10 @@ void Graph::ReadLines(vector<string> lines)
             {
                 if(lines[j] == "#start")
                     break;
-                int x = lines[j][0] - '0';
-                int y = lines[j][2] - '0';
+                std::string line = lines[j];
+                int commaIndex = line.find(",");
+                int x = std::stoi(line.substr(0, commaIndex));
+                int y = std::stoi(line.substr(commaIndex + 1));
                 this->AddEdge(x, y);
             }
         }
