@@ -24,6 +24,11 @@ void BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &
         int current = q.front();
         q.pop();
         cout << g.Data[current] << " ";
+        if(g.Data[current] == g.End && !visited[current])
+        {
+            cout << g.Data[current] << " ";
+            return;
+        }
         for(int i = 0; i < g.GetSize(); i++)
         {
             if(g.Matrix[current][i] == 1 && !visited[i])
