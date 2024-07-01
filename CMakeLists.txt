@@ -20,7 +20,7 @@ if(NOT raylib_FOUND)
   endif()
 endif()
 
-set(SOURCE main.cpp graph.h graph.cpp Solver.h Solver.cpp)
+set(SOURCE main.cpp graph.h graph.cpp DFS.h DFS.cpp)
 set(MAZE_DATA )
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
