@@ -1,8 +1,16 @@
 debug-build
 build
 cmake-build-debug
+_CPack_Packages
 
 .vscode
 .idea
 .vs
+
+
+*.sh
+*.tar.gz
+*.tar.Z
+*.exe
+
 
