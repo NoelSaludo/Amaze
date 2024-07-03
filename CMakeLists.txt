@@ -6,7 +6,7 @@ set(RAYLIB_VERSION 5.0)
 find_package(raylib ${RAYLIB_VERSION} QUIET)
 if(NOT raylib_FOUND)
    include(FetchContent)
-   FetchContent_MakeAvailable(
+   FetchContent_Declare(
       raylib
       DOWNLOAD_EXTRACT_TIMESTAMP OFF
       URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
@@ -27,7 +27,7 @@ set(MAZE_DATA )
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 add_executable(app ${SOURCE})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(app PRIVATE raylib)
 
 install(TARGETS app RUNTIME DESTINATION .)
