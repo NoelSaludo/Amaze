@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <cstring>
+
 #include <vector>
 #include "graph.h"
 
@@ -78,11 +79,20 @@ void Graph::ReadLines(vector<string> lines)
             {
                 if(lines[j] == "#start")
                     break;
-                std::string line = lines[j];
+                string line = lines[j];
                 int commaIndex = line.find(",");
-                int x = std::stoi(line.substr(0, commaIndex));
-                int y = std::stoi(line.substr(commaIndex + 1));
-                this->AddEdge(x, y);
+                try
+                {
+                    int x = stoi(line.substr(0, commaIndex));
+                    int y = stoi(line.substr(commaIndex + 1));
+                    
+                    this->AddEdge(x, y);
+                }
+                catch(const std::exception& e)
+                {
+                    std::cerr << e.what() << '\n';
+                }
+                
             }
         }
         if(lines[i] == "#start")
