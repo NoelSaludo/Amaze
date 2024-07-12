@@ -2,17 +2,21 @@
 #include <queue>
 #include <algorithm>
 
-
 #include "BFS.h"
+
 using namespace std;
 
-void BFS(const Graph &g){
+vector<int> BFS(const Graph &g){
     queue<int> nextToVisit;
     vector<bool> visited(g.GetSize());
 
     int startIndex = find(g.Data.begin(), g.Data.end(), g.Start) - g.Data.begin();
+    int endIndex = find(g.Data.begin(), g.Data.end(), g.End) - g.Data.begin();
 
     DnP result = BFSUtil(g,startIndex, visited, nextToVisit);
+
+    vector<int> path = Solve(result,endIndex);
+    return path;
 }
 
 DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
@@ -21,6 +25,7 @@ DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q
 
     vector<int> depthList(g.GetSize(),0);
     vector<int> previousList(g.GetSize(),-1);
+    vector<int> *traversedList = new vector<int>;
 
     int depth = 0;
 
@@ -44,6 +49,7 @@ DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q
                     q.push(j);
                 }
             }
+            traversedList->push_back(current);
             
             cout << "Data: " << g.Data[current] << "\nPrev: " << previousList[current] << "\nDepth: " << depthList[current] << endl;
             cout << endl;
@@ -51,7 +57,17 @@ DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q
         
         depth++;  // Increment depth after processing all nodes at the current level
     }
-    return {depthList,previousList};
-
-
+    return {depthList,previousList,*traversedList};
+}
+vector<int> Solve(DnP data, int end)
+{
+    vector<int> path;
+    int current = end;
+    while (current != -1)
+    {
+        path.push_back(current);
+        current = data.previousList[current];
+    }
+    reverse(path.begin(), path.end());
+    return path;
 }
