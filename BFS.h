@@ -2,12 +2,17 @@
 #include <string>
 #include <queue>
 #include "graph.h"
-#include "Dijsktra.h"
 
 #ifndef BFS_H_
 #define BFS_H_
+struct DnP{
+    std::vector<int> depthList;
+    std::vector<int> previousList;
+    std::vector<int> traversedList;
+};
 
-void BFS(const Graph &);
+std::vector<int> BFS(const Graph &);
 DnP BFSUtil(const Graph &,const int , std::vector<bool> &, std::queue<int> &);
+std::vector<int> Solve(DnP,int);
 
 #endif
