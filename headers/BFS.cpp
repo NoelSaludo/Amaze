@@ -8,18 +8,18 @@ using namespace std;
 
 vector<int> BFS(const Graph &g){
     queue<int> nextToVisit;
-    vector<bool> visited(g.GetSize());
+    vector<bool> visited(g.GetSize(), false);
 
     int startIndex = find(g.Data.begin(), g.Data.end(), g.Start) - g.Data.begin();
     int endIndex = find(g.Data.begin(), g.Data.end(), g.End) - g.Data.begin();
 
-    DnP result = BFSUtil(g,startIndex, visited, nextToVisit);
+    struct dnp result = BFSUtil(g,startIndex, visited, nextToVisit);
 
     vector<int> path = Solve(result,endIndex);
     return path;
 }
 
-DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
+struct dnp BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
     visited[start] = true;
     q.push(start);
 
@@ -55,19 +55,7 @@ DnP BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q
             cout << endl;
         }
         
-        depth++;  // Increment depth after processing all nodes at the current level
+        depth++;
     }
     return {depthList,previousList,*traversedList};
-}
-vector<int> Solve(DnP data, int end)
-{
-    vector<int> path;
-    int current = end;
-    while (current != -1)
-    {
-        path.push_back(current);
-        current = data.previousList[current];
-    }
-    reverse(path.begin(), path.end());
-    return path;
 }

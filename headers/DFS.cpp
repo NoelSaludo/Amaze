@@ -7,49 +7,39 @@ using namespace std;
 vector<string> DepthFirstSearch(const Graph &graph)
 {
     int size = graph.GetSize();
-    vector<bool> visited(size);
-    for (int i = 0; i < size; i++)
-    {
-        visited[i] = false;
-    }
-    vector<string> neighbors;
+    vector<bool> visited(size, false);
 
-    int index = 0;
+    vector<string> path;
 
-    for(int i = 0; i < size; i++)
-    {
-        if(graph.Data[i] == graph.Start)
-        {
-            index = i;
-        }
-    }
+    int index = find(graph.Data.begin(), graph.Data.end(), graph.Start) - graph.Data.begin();
+
     bool flag = false;
 
-    DFSutil(graph, index, visited, size, neighbors, flag);
+    DFSutil(graph, index, visited, size, path, flag);
 
-    return neighbors;
+    return path;
 
 
 }
-void DFSutil(Graph graph,int start, vector<bool>& visited, int size, vector<string> &neighbors, bool &flag)
+void DFSutil(Graph graph,int start, vector<bool>& visited, int size, vector<string> &path, bool &flag)
 {
-    visited[start] = true;
-    neighbors.push_back(graph.Data[start]);
+    int current = start;
+    visited[current] = true;
+    path.push_back(graph.Data[current]);
     for (int i = 0; i < size; i++)
     {
         if(flag)
         {
-            return;
+            break;
         }
-        if (graph.Data[start] == graph.End && !flag)
+        if (graph.Data[current] == graph.End && !flag)
         {
-            // neighbors.push_back(graph.Data[start]);
             flag = true;
-            return;
+            break;
         }
-        else if (graph.Matrix[start][i] == 1 && !visited[i])
+        else if (graph.Matrix[current][i] == 1 && !visited[i])
         {
-            DFSutil(graph, i, visited, size, neighbors, flag);
+            DFSutil(graph, i, visited, size, path, flag);
         }
     }
 
