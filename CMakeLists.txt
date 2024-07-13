@@ -20,16 +20,19 @@ if(NOT raylib_FOUND)
   endif()
 endif()
 
-set(SOURCE main.cpp graph.h graph.cpp DFS.h DFS.cpp
-        BFS.h
-        BFS.cpp)
-set(MAZE_DATA )
+set(SOURCE main.cpp)
+set(HEADERS headers/graph.h headers/BFS.h headers/DFS.h headers/graph.cpp headers/BFS.cpp headers/DFS.cpp)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/headers)
+
+set(MAZE_DATA 
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze1.txt 
+        )
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-add_executable(app ${SOURCE})
+add_executable(app ${SOURCE} ${HEADERS})
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
 target_link_libraries(app PRIVATE raylib)
-
 install(TARGETS app RUNTIME DESTINATION .)
 install(DIRECTORY resources DESTINATION resouces)
 
