@@ -57,7 +57,7 @@
 ## ⌨️Authors
 
 - [Antenor, Justine](https://github.com/Tiiinnn)
-- [Buqnuin, Theodore Von Joshua](https://github.com/BunquinTheodore)
+- [Bunqnuin, Theodore Von Joshua](https://github.com/BunquinTheodore)
 - [Saludo, Noel Zyrence](https://github.com/NoelSaludo)
 - [Soriano, Albert JR](https://github.com/Soriano-San)
 
