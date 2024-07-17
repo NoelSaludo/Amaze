@@ -7,7 +7,7 @@
 #ifndef DFS_H_
 #define DFS_H_
 
-std::vector<int> DepthFirstSearch(const Graph&);
-void DFSutil(Graph,int, std::vector<bool>&, int,std::vector<std::string> &, bool &, std::vector<int>&);
+paths DFS(const Graph&);
+void DFSutil(Graph,int, std::vector<bool>&, int,std::vector<int> &, bool &, std::vector<int>&);
 
 #endif

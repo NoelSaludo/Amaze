@@ -97,11 +97,13 @@ void Graph::ReadLines(vector<string> lines)
         }
         if(lines[i] == "#start")
         {
-            this->Start = lines[i+1];
+            string start = lines[i+1];
+            this->Start = find(Data.begin(), Data.end(), start) - Data.begin();
         }
         if(lines[i] == "#end")
         {
-            this->End = lines[i+1];
+            string end = lines[i+1];
+            this->End = find(Data.begin(), Data.end(), end) - Data.begin();
         }
     }
 }
