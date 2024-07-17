@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector<int> DepthFirstSearch(const Graph &graph)
+vector<int> DFS(const Graph &graph)
 {
     int size = graph.GetSize();
     vector<bool> visited(size, false);

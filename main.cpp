@@ -6,54 +6,74 @@
 #include "headers/DFS.h"
 #include "headers/BFS.h"
 #include "headers/menu.h"
+#include <raylib.h>
 
 using namespace std;
 
-void displayAllMazes(const vector<string>& );
-int getUserChoice(const string& , int );
-Graph loadMaze(const string& );
+void displayAllMazes(const vector<string> &);
+int getUserChoice(const string &, int);
+Graph loadMaze(const string &);
 
+const int screenWidth = 800;
+const int screenHeight = 450;
 
-int main() {
-   vector<User> users;  // Store registered users
+int main()
+{
+    vector<User> users;
+    vector<string> mazeFiles = {"../resources/maze1.txt", "../resources/maze2.txt", "../resources/maze3.txt", "../resources/maze4.txt"};
+    vector<Graph> mazes;
+    Graph *selectedMaze;
+    vector<int> path;
 
-    while (true) {
+    InitWindow(screenWidth, screenHeight, "Maze Solver");
+
+    SetTargetFPS(60);
+
+    while (true)
+    {
         int choice;
         cout << "1. Register\n2. Log-in\n3. Exit\nEnter your choice: ";
         cin >> choice;
 
         User user;
-        if (choice == 1) {
+        if (choice == 1)
+        {
             cout << "Enter username: ";
             cin >> user.username;
             cout << "Enter password: ";
             cin >> user.password;
             registerUser(users, user);
-        } else if (choice == 2) {
+        }
+        else if (choice == 2)
+        {
             cout << "Enter username: ";
             cin >> user.username;
             cout << "Enter password: ";
             cin >> user.password;
-            if (logIn(users, user)) {
+            if (logIn(users, user))
+            {
                 cout << "Log-in successful.\n";
                 break;
-            } else {
+            }
+            else
+            {
                 cout << "Invalid username or password.\n";
             }
-        } else if (choice == 3) {
+        }
+        else if (choice == 3)
+        {
             cout << "Exiting program....";
             return 0;
-        } else {
+        }
+        else
+        {
             cout << "Invalid choice\n";
         }
     }
 
-    // List of maze files in the resources folder
-    vector<string> mazeFiles = {"resources/maze1.txt", "resources/maze2.txt", "resources/maze3.txt", "resources/maze4.txt"};
-    vector<Graph> mazes; 
-
     // Load each maze from file
-    for (const auto& file : mazeFiles) {
+    for (const auto &file : mazeFiles)
+    {
         Graph maze(file);
         mazes.push_back(maze);
     }
@@ -63,63 +83,72 @@ int main() {
 
     // Get user choice for the maze and algorithm
     int mazeChoice = getUserChoice("Choose a maze (1-4): ", mazes.size());
-    mazeChoice--;  // Adjust for 0-based indexing
+    mazeChoice--; // Adjust for 0-based indexing
 
     int algorithmChoice = getUserChoice("Choose an algorithm:\n1. Depth-First Search (DFS)\n2. Breadth-First Search (BFS)\n Enter choice: ", 2);
 
     // Perform the chosen algorithm on the selected maze
-    if (algorithmChoice == 1) {
-    Graph selectedMaze = mazes[mazeChoice];
-    cout << "Start: " << selectedMaze.Start << endl;
-    cout << "End: " << selectedMaze.End << endl;
+    selectedMaze = &mazes[mazeChoice];
 
-    vector<int> path = DepthFirstSearch(selectedMaze); 
-
-    //replace this with jr display
-    cout << "Path found by DFS:" << endl;
-    for (const auto& step : path) {
-        cout << step << " ";
+    if (algorithmChoice == 1)
+    {
+        path = DFS(*selectedMaze);
     }
-    cout << endl;
-    } 
+
+    else if (algorithmChoice == 2)
+    {
+        path = BFS(*selectedMaze);
+    }
     
-    else if (algorithmChoice == 2) {
-    Graph selectedMaze = mazes[mazeChoice];
-    cout << "Start: " << selectedMaze.Start << endl;
-    cout << "End: " << selectedMaze.End << endl;
+    while (!WindowShouldClose())
+    {
+        //updates here
 
-    vector<int> path = BFS(selectedMaze); 
 
-    //replace this with jr display
-    cout << "Path found by BFS:" << endl;
-    for (const auto& step : path) {
-        cout << step << " ";
+
+
+
+        //drawing on the screen
+        BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        DrawText("Maze Solver", 10, 10, 20, DARKGRAY);
+
+        EndDrawing();
     }
-    cout << endl;
-    } 
-    else {
-    cout << "Invalid choice!" << endl;
-    }
+
+    CloseWindow();
+
+    return 0;
+    
 }
 
 // Display all available mazes
-void displayAllMazes(const vector<string>& mazeFiles) {
+void displayAllMazes(const vector<string> &mazeFiles)
+{
     cout << "Loaded Mazes:" << endl;
-    for (size_t i = 0; i < mazeFiles.size(); ++i) {
+    for (size_t i = 0; i < mazeFiles.size(); ++i)
+    {
         cout << i + 1 << ". " << mazeFiles[i] << endl;
     }
     cout << endl;
 }
 
 // Get a valid user choice within the specified range
-int getUserChoice(const string& prompt, int maxChoice) {
+int getUserChoice(const string &prompt, int maxChoice)
+{
     int choice;
-    while (true) {
+    while (true)
+    {
         cout << prompt;
         cin >> choice;
-        if (choice >= 1 && choice <= maxChoice) {
+        if (choice >= 1 && choice <= maxChoice)
+        {
             break;
-        } else {
+        }
+        else
+        {
             cout << "Invalid choice. Please enter a valid number." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -129,16 +158,19 @@ int getUserChoice(const string& prompt, int maxChoice) {
 }
 
 // Load a maze from a file
-Graph loadMaze(const string& filename) {
+Graph loadMaze(const string &filename)
+{
     ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         cerr << "Error opening maze data file: " << filename << endl;
         exit(EXIT_FAILURE);
     }
 
     string line;
     string mazeData;
-    while (getline(file, line)) {
+    while (getline(file, line))
+    {
         mazeData += line + "\n";
     }
     file.close();
