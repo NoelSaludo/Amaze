@@ -2,9 +2,10 @@
 #include <vector>
 #include <fstream>
 #include <limits>
-#include "graph.h"
-#include "DFS.h"
-#include "BFS.h"
+#include "headers/graph.h"
+#include "headers/DFS.h"
+#include "headers/BFS.h"
+#include "headers/menu.h"
 
 using namespace std;
 
@@ -12,7 +13,41 @@ void displayAllMazes(const vector<string>& );
 int getUserChoice(const string& , int );
 Graph loadMaze(const string& );
 
+
 int main() {
+   vector<User> users;  // Store registered users
+
+    while (true) {
+        int choice;
+        cout << "1. Register\n2. Log-in\n3. Exit\nEnter your choice: ";
+        cin >> choice;
+
+        User user;
+        if (choice == 1) {
+            cout << "Enter username: ";
+            cin >> user.username;
+            cout << "Enter password: ";
+            cin >> user.password;
+            registerUser(users, user);
+        } else if (choice == 2) {
+            cout << "Enter username: ";
+            cin >> user.username;
+            cout << "Enter password: ";
+            cin >> user.password;
+            if (logIn(users, user)) {
+                cout << "Log-in successful.\n";
+                break;
+            } else {
+                cout << "Invalid username or password.\n";
+            }
+        } else if (choice == 3) {
+            cout << "Exiting program....";
+            return 0;
+        } else {
+            cout << "Invalid choice\n";
+        }
+    }
+
     // List of maze files in the resources folder
     vector<string> mazeFiles = {"resources/maze1.txt", "resources/maze2.txt", "resources/maze3.txt", "resources/maze4.txt"};
     vector<Graph> mazes; 
