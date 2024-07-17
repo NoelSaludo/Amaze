@@ -9,25 +9,25 @@ using namespace std;
 paths BFS(const Graph &g){
     queue<int> nextToVisit;
     vector<bool> visited(g.GetSize(), false);
+    vector<int> previousList(g.GetSize(),-1);
 
-    int startIndex = find(g.Data.begin(), g.Data.end(), g.Start) - g.Data.begin();
-    int endIndex = find(g.Data.begin(), g.Data.end(), g.End) - g.Data.begin();
+    int startIndex = g.Start;
+    int endIndex = g.End;
 
-    paths result = BFSUtil(g,startIndex, visited, nextToVisit);
+    paths result = BFSUtil(g,startIndex, visited, nextToVisit, previousList);
     result.start = startIndex;
     result.end = endIndex;
 
-    vector<int> path = Solve(result,endIndex);
+    vector<int> path = Solve(previousList,endIndex);
     result.Result = path;
     return result;
 }
 
-paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
+paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q, vector<int> &previousList) {
     visited[start] = true;
     q.push(start);
 
     vector<int> depthList(g.GetSize(),0);
-    vector<int> previousList(g.GetSize(),-1);
     vector<int> *traversedList = new vector<int>;
 
     int depth = 0;
@@ -39,7 +39,7 @@ paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> 
             int current = q.front();
             q.pop();
             
-            if (g.Data[current] == g.End && !visited[current]) {
+            if (g.Data[current] == g.Data[g.End] && !visited[current]) {
                 cout << g.Data[current] << " ";
                 return {previousList};
             }
@@ -53,9 +53,6 @@ paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> 
                 }
             }
             traversedList->push_back(current);
-            
-            cout << "Data: " << g.Data[current] << "\nPrev: " << previousList[current] << "\nDepth: " << depthList[current] << endl;
-            cout << endl;
         }
         
         depth++;

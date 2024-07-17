@@ -10,8 +10,8 @@ class Graph
         Graph(std::string);
         void PrintGraph();
         void LoadGraph(std::string&);
-        std::string Start;
-        std::string End;
+        int Start;
+        int End;
         std::vector<std::string> Data;
         std::vector<std::vector<int>> Matrix;
         int GetSize() const;

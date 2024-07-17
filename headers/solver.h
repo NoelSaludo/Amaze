@@ -11,5 +11,5 @@ typedef struct{
     std::vector<int> Result;
 }paths;
 
-std::vector<int> Solve(paths data, int end);
+std::vector<int> Solve(std::vector<int> data, int end);
 #endif

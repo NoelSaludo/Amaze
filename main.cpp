@@ -14,6 +14,7 @@ using namespace std;
 void displayAllMazes(const vector<string> &);
 int getUserChoice(const string &, int);
 Graph loadMaze(const string &);
+void printPath(const paths &);
 
 const int screenWidth = 800;
 const int screenHeight = 450;
@@ -100,6 +101,8 @@ int main()
     {
         data = BFS(*selectedMaze);
     }
+
+    printPath(data);
     
     while (!WindowShouldClose())
     {
@@ -123,6 +126,31 @@ int main()
 
     return 0;
     
+}
+
+void printPath(const paths &data)
+{
+    if (data.Result.empty())
+    {
+        cout << "No path found." << endl;
+    }
+    else
+    {
+        cout << "Path found!" << endl;
+        cout << "Path: ";
+        for (int i = 0; i < data.Result.size(); ++i)
+        {
+            if(data.Result[i] == -1){
+                continue;
+            }
+            cout << data.Result[i];
+            if (i < data.Result.size() - 1)
+            {
+                cout << " -> ";
+            }
+        }
+        cout << endl;
+    }
 }
 
 // Display all available mazes

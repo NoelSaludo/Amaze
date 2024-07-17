@@ -8,6 +8,6 @@
 #define BFS_H_
 
 paths BFS(const Graph &);
-paths BFSUtil(const Graph &,const int , std::vector<bool> &, std::queue<int> &);
+paths BFSUtil(const Graph &,const int , std::vector<bool> &, std::queue<int> &, std::vector<int> &);
 
 #endif
