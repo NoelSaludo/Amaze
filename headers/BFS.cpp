@@ -38,7 +38,7 @@ struct dnp BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<
             
             if (g.Data[current] == g.End && !visited[current]) {
                 cout << g.Data[current] << " ";
-                return {depthList, previousList};
+                return {previousList};
             }
             
             for (int j = 0; j < g.GetSize(); j++) {
@@ -57,5 +57,5 @@ struct dnp BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<
         
         depth++;
     }
-    return {depthList,previousList,*traversedList};
+    return {previousList};
 }
