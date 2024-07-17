@@ -19,7 +19,7 @@ int main() {
 
     while (true) {
         int choice;
-        cout << "1. Register\n2. Log-In\n3. Log-out\nEnter your choice: ";
+        cout << "1. Register\n2. Log-in\n3. Exit\nEnter your choice: ";
         cin >> choice;
 
         User user;
