@@ -6,20 +6,23 @@
 
 using namespace std;
 
-vector<int> BFS(const Graph &g){
+paths BFS(const Graph &g){
     queue<int> nextToVisit;
     vector<bool> visited(g.GetSize(), false);
 
     int startIndex = find(g.Data.begin(), g.Data.end(), g.Start) - g.Data.begin();
     int endIndex = find(g.Data.begin(), g.Data.end(), g.End) - g.Data.begin();
 
-    struct dnp result = BFSUtil(g,startIndex, visited, nextToVisit);
+    paths result = BFSUtil(g,startIndex, visited, nextToVisit);
+    result.start = startIndex;
+    result.end = endIndex;
 
     vector<int> path = Solve(result,endIndex);
-    return path;
+    result.Result = path;
+    return result;
 }
 
-struct dnp BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
+paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> &q) {
     visited[start] = true;
     q.push(start);
 
@@ -57,5 +60,5 @@ struct dnp BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<
         
         depth++;
     }
-    return {previousList};
+    return {previousList, *traversedList,0,0};
 }

@@ -1,6 +1,6 @@
 #include "solver.h"
 
-std::vector<int> Solve(dnp data, int end)
+std::vector<int> Solve(paths data, int end)
 {
     std::vector<int> path;
     int current = end;

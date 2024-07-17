@@ -2,30 +2,35 @@
 
 using namespace std;
 
-vector<int> DFS(const Graph &graph)
+paths DFS(const Graph &graph)
 {
     int size = graph.GetSize();
     vector<bool> visited(size, false);
     vector<int> prev(size, -1);
-    vector<string> path;
+    vector<int> path;
 
-    int index = find(graph.Data.begin(), graph.Data.end(), graph.Start) - graph.Data.begin();
+    int startIndex = find(graph.Data.begin(), graph.Data.end(), graph.Start) - graph.Data.begin();
+    int endIndex = find(graph.Data.begin(), graph.Data.end(), graph.End) - graph.Data.begin();
 
     bool flag = false;
 
-    DFSutil(graph, index, visited, size, path, flag, prev);
+    DFSutil(graph, startIndex, visited, size, path, flag, prev);
 
-    dnp pathData;
-    pathData.previousList = prev;
+    paths result;
+    result.previousList = prev;
+    result.traverseList = path;
 
-    vector<int> result = Solve(pathData, find(graph.Data.begin(), graph.Data.end(), graph.End) - graph.Data.begin());
+    vector<int> resultpath = Solve(result, find(graph.Data.begin(), graph.Data.end(), graph.End) - graph.Data.begin());
+    result.Result = resultpath;
+    result.start = startIndex;
+    result.end = endIndex;
 
     return result;
 }
-void DFSutil(Graph graph, int start, vector<bool>& visited, int size, vector<string>& path, bool& flag, vector<int>& prev) 
+void DFSutil(Graph graph, int start, vector<bool>& visited, int size, vector<int>& path, bool& flag, vector<int>& prev) 
 {
     visited[start] = true;
-    path.push_back(graph.Data[start]);
+    path.push_back(start);
 
     if (graph.Data[start] == graph.End) { // Check if the current node is the end node
         flag = true;
