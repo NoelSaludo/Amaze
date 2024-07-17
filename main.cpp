@@ -2,11 +2,12 @@
 #include <vector>
 #include <fstream>
 #include <limits>
+#include <raylib.h>
 #include "headers/graph.h"
 #include "headers/DFS.h"
 #include "headers/BFS.h"
 #include "headers/menu.h"
-#include <raylib.h>
+#include "headers/solver.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main()
     vector<string> mazeFiles = {"../resources/maze1.txt", "../resources/maze2.txt", "../resources/maze3.txt", "../resources/maze4.txt"};
     vector<Graph> mazes;
     Graph *selectedMaze;
-    vector<int> path;
+    paths data;
 
     InitWindow(screenWidth, screenHeight, "Maze Solver");
 
@@ -92,12 +93,12 @@ int main()
 
     if (algorithmChoice == 1)
     {
-        path = DFS(*selectedMaze);
+        data = DFS(*selectedMaze);
     }
 
     else if (algorithmChoice == 2)
     {
-        path = BFS(*selectedMaze);
+        data = BFS(*selectedMaze);
     }
     
     while (!WindowShouldClose())
