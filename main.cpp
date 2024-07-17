@@ -73,7 +73,9 @@ int main() {
     cout << "Start: " << selectedMaze.Start << endl;
     cout << "End: " << selectedMaze.End << endl;
 
-    vector<string> path = DepthFirstSearch(selectedMaze); // Assuming DepthFirstSearch returns a vector<string>
+    vector<int> path = DepthFirstSearch(selectedMaze); 
+
+    //replace this with jr display
     cout << "Path found by DFS:" << endl;
     for (const auto& step : path) {
         cout << step << " ";
@@ -86,11 +88,13 @@ int main() {
     cout << "Start: " << selectedMaze.Start << endl;
     cout << "End: " << selectedMaze.End << endl;
 
-    BFS(selectedMaze); // Assuming BFS returns a vector<string>
-    // cout << "Path found by BFS:" << endl;
-    // for (const auto& step : path) {
-    //     cout << step << " ";
-    // }
+    vector<int> path = BFS(selectedMaze); 
+
+    //replace this with jr display
+    cout << "Path found by BFS:" << endl;
+    for (const auto& step : path) {
+        cout << step << " ";
+    }
     cout << endl;
     } 
     else {
