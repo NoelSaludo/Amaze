@@ -2,28 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(app VERSION 1.0)
 
-set(RAYLIB_VERSION 5.0)
-find_package(raylib ${RAYLIB_VERSION} QUIET)
-if(NOT raylib_FOUND)
-   include(FetchContent)
-   FetchContent_MakeAvailable(
-      raylib
-      DOWNLOAD_EXTRACT_TIMESTAMP OFF
-      URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
-   )
-   FetchContent_GetProperties(raylib)
-  if (NOT raylib_POPULATED) # Have we downloaded raylib yet?
-    set(FETCHCONTENT_QUIET NO)
-    FetchContent_Populate(raylib)
-    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
-    add_subdirectory(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
-  endif()
-endif()
-
 set(SOURCE main.cpp)
-set(HEADERS headers/graph.h headers/BFS.h headers/DFS.h headers/graph.cpp headers/BFS.cpp headers/DFS.cpp)
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/headers)
+set(HEADERS headers/graph.h headers/BFS.h headers/DFS.h headers/graph.cpp headers/BFS.cpp headers/DFS.cpp headers/solver.h headers/solver.cpp headers/menu.cpp headers/menu.h)
 
 set(MAZE_DATA 
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze1.txt 
@@ -31,8 +11,7 @@ set(MAZE_DATA
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 add_executable(app ${SOURCE} ${HEADERS})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/resources)
-target_link_libraries(app PRIVATE raylib)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 install(TARGETS app RUNTIME DESTINATION .)
 install(DIRECTORY resources DESTINATION resouces)
 
