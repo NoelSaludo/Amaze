@@ -27,9 +27,6 @@ int main()
     Graph *selectedMaze;
     paths data;
 
-    InitWindow(screenWidth, screenHeight, "Maze Solver");
-
-    SetTargetFPS(60);
 
     while (true)
     {
@@ -103,6 +100,10 @@ int main()
     }
 
     printPath(data);
+    
+    InitWindow(screenWidth, screenHeight, "Maze Solver");
+
+    SetTargetFPS(60);
     
     while (!WindowShouldClose())
     {
