@@ -1,13 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <limits>
-#include <raylib.h>
-#include "headers/graph.h"
-#include "headers/DFS.h"
-#include "headers/BFS.h"
-#include "headers/menu.h"
-#include "headers/solver.h"
+#include "headers/global.h"
 
 using namespace std;
 
@@ -100,7 +91,7 @@ int main()
     }
 
     printPath(data);
-    
+
     InitWindow(screenWidth, screenHeight, "Maze Solver");
 
     SetTargetFPS(60);

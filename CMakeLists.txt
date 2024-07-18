@@ -23,6 +23,7 @@ endif()
 
 set(SOURCE main.cpp)
 set(HEADERS 
+    headers/global.h
     headers/graph.h 
     headers/BFS.h 
     headers/DFS.h 
@@ -33,6 +34,8 @@ set(HEADERS
     headers/solver.cpp 
     headers/menu.cpp 
     headers/menu.h
+    headers/draw.h
+    headers/draw.cpp
 )
 
 set(MAZE_DATA 

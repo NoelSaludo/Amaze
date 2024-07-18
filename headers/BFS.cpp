@@ -1,8 +1,4 @@
-#include <iostream>
-#include <queue>
-#include <algorithm>
-
-#include "BFS.h"
+#include "global.h"
 
 using namespace std;
 
