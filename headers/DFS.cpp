@@ -17,13 +17,17 @@ paths DFS(const Graph &graph)
     DFSutil(graph, startIndex, visited, size, path, flag, prev);
 
     paths result;
-    result.previousList = prev;
     result.traverseList = path;
 
+    auto start = chrono::high_resolution_clock::now();
     vector<int> resultpath = Solve(prev, endIndex);
+    auto end = chrono::high_resolution_clock::now();
+
     result.Result = resultpath;
     result.start = startIndex;
     result.end = endIndex;
+    result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    
 
     return result;
 }

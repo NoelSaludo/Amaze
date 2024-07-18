@@ -13,8 +13,12 @@ paths BFS(const Graph &g){
     paths result = BFSUtil(g,startIndex, visited, nextToVisit, previousList);
     result.start = startIndex;
     result.end = endIndex;
-
+    
+    auto start = chrono::high_resolution_clock::now();
     vector<int> path = Solve(previousList,endIndex);
+    auto end = chrono::high_resolution_clock::now();
+
+    result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     result.Result = path;
     return result;
 }
@@ -53,5 +57,5 @@ paths BFSUtil(const Graph &g,const int start, vector<bool> &visited, queue<int> 
         
         depth++;
     }
-    return {previousList, *traversedList,0,0};
+    return {*traversedList,0,0};
 }

@@ -5,6 +5,7 @@
 #include <raylib.h>
 #include <cstring>
 #include <queue>
+#include <chrono>
 #include "graph.h"
 #include "DFS.h"
 #include "BFS.h"
