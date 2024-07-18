@@ -1,10 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <fstream>
-#include <cstring>
-
-#include <vector>
-#include "graph.h"
+#include "global.h"
 
 using namespace std;
 

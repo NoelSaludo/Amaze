@@ -23,6 +23,7 @@ endif()
 
 set(SOURCE main.cpp)
 set(HEADERS 
+    headers/global.h
     headers/graph.h 
     headers/BFS.h 
     headers/DFS.h 

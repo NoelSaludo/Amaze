@@ -1,4 +1,4 @@
-#include "solver.h"
+#include "global.h"
 
 std::vector<int> Solve(std::vector<int> data, int end)
 {

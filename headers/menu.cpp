@@ -1,5 +1,4 @@
-#include "menu.h"
-#include <iostream> // Add this line to include the necessary header
+#include "global.h"
 
 void registerUser(vector<User>& users, const User& user) {
     for (const auto& existingUser : users) {
