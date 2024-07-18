@@ -34,8 +34,6 @@ set(HEADERS
     headers/solver.cpp 
     headers/menu.cpp 
     headers/menu.h
-    headers/draw.h
-    headers/draw.cpp
 )
 
 set(MAZE_DATA 
