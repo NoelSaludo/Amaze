@@ -3,10 +3,11 @@
 
 #include <vector>
 #include "graph.h"
+#include "paths.h"
 
 void displayAllMazes(const std::vector<Graph>& mazes);
 int getUserChoice();
-void startMazeSolver(std::vector<Graph>& mazes);
+paths startMazeSolver(std::vector<Graph>& mazes);
 void displayMainMenu();
 
 #endif
