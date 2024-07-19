@@ -25,8 +25,6 @@ void Graph::AddEdge(int x, int y)
     }
 }
 
-
-
 void Graph::LoadGraph(string &file)
 {
     ifstream fin(file);
@@ -49,6 +47,7 @@ void Graph::LoadGraph(string &file)
     fin.close();
     this->ReadLines(lines);
 }
+
 void Graph::ReadLines(vector<string> lines)
 {
     for (int i = 0; i < lines.size(); i++)
@@ -67,11 +66,10 @@ void Graph::ReadLines(vector<string> lines)
         }
         if (lines[i] == "#edge")
         {
-            
             this->loadMatrixTemp();
             for (int j = i + 1; j < lines.size(); j++)
             {
-                if(lines[j] == "#start")
+                if (lines[j] == "#start")
                     break;
                 string line = lines[j];
                 int commaIndex = line.find(",");
@@ -79,28 +77,28 @@ void Graph::ReadLines(vector<string> lines)
                 {
                     int x = stoi(line.substr(0, commaIndex));
                     int y = stoi(line.substr(commaIndex + 1));
-                    
+
                     this->AddEdge(x, y);
                 }
-                catch(const std::exception& e)
+                catch (const std::exception &e)
                 {
                     std::cerr << e.what() << '\n';
                 }
-                
             }
         }
-        if(lines[i] == "#start")
+        if (lines[i] == "#start")
         {
-            string start = lines[i+1];
+            string start = lines[i + 1];
             this->Start = find(Data.begin(), Data.end(), start) - Data.begin();
         }
-        if(lines[i] == "#end")
+        if (lines[i] == "#end")
         {
-            string end = lines[i+1];
+            string end = lines[i + 1];
             this->End = find(Data.begin(), Data.end(), end) - Data.begin();
         }
     }
 }
+
 void Graph::loadMatrixTemp()
 {
     for (int i = 0; i < size; i++)
@@ -113,7 +111,8 @@ void Graph::loadMatrixTemp()
         Matrix.push_back(temp);
     }
 }
-void Graph::PrintGraph()
+
+void Graph::PrintGraph() const // Add const here
 {
     cout << "  ";
     for (int i = 0; i < size; i++)

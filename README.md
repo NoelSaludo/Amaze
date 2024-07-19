@@ -83,24 +83,7 @@ This project outlines the development of a C++ based simulation tool for maze pa
 - **Depth First Search (DFS)**: Explores as far as possible along each branch before backtracking.
 - **Breadth First Search (BFS)**: Explores all nodes at the present depth level before moving on to nodes at the next depth level.
 
-## 🧪 Testing
 
-To run tests:
-1. Ensure you are in the `build` directory.
-2. Run the test executable:
-    ```bash
-    ./test-maze-solver
-    ```
-
-## 🤝 Contributing Guidelines
-
-We welcome contributions! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Open a pull request.
 
 ## 📄 License
 
