@@ -1,27 +1,29 @@
-#include "global.h"
+#include "headers/global.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    if (argc < 2)
-    {
-        cerr << "Usage: " << argv[0] << " <maze_file>\n";
-        return 1;
-    }
+
+    vector<Graph> mazes{
+        Graph("../resources/maze1.txt"),
+        Graph("../resources/maze2.txt"),
+        Graph("../resources/maze3.txt"),
+        Graph("../resources/maze4.txt"),
+        Graph("../resources/maze5.txt")
+    };
+
+    paths solution = startMazeSolver(mazes);
 
     InitWindow(800, 600, "Maze Solver");
     SetTargetFPS(60);
-
-    vector<Graph> mazes;
-    for (int i = 1; i < argc; ++i)
+    while(!WindowShouldClose())
     {
-        mazes.emplace_back(argv[i]);
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+        
+        EndDrawing();
     }
-
-    displayMainMenu();
-    startMazeSolver(mazes);
-
     CloseWindow();
     return 0;
 }
