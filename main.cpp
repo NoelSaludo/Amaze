@@ -13,11 +13,17 @@ int main(int argc, char *argv[])
         Graph("../resources/maze5.txt")
     };
 
-    startMazeSolver(mazes);
+    paths solution = startMazeSolver(mazes);
 
     InitWindow(800, 600, "Maze Solver");
     SetTargetFPS(60);
-
+    while(!WindowShouldClose())
+    {
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+        
+        EndDrawing();
+    }
     CloseWindow();
     return 0;
 }
