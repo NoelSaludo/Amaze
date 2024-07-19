@@ -46,7 +46,7 @@ set(MAZE_DATA
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(Amaze WIN32 ${SOURCE} ${HEADERS})
+add_executable(Amaze ${SOURCE} ${HEADERS})
 target_link_libraries(Amaze PRIVATE raylib)
 
 install(TARGETS Amaze RUNTIME DESTINATION bin)
