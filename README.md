@@ -43,9 +43,9 @@ This project outlines the development of a C++ based simulation tool for maze pa
 - `Cmake`
 - `Ninja`
 
-## ⚔️Maze Options
+## ⚔️ Maze Options
 - Maze 1: ![maze4](https://github.com/user-attachments/assets/84c5bbe4-9f35-4e58-9ee6-048c18288d30)
-- Maze 2  ![maze3](https://github.com/user-attachments/assets/798003f7-6135-48e9-92ed-cf2807af5c26)
+- Maze 2: ![maze3](https://github.com/user-attachments/assets/798003f7-6135-48e9-92ed-cf2807af5c26)
 - Maze 3: ![maze2](https://github.com/user-attachments/assets/a8eb900e-e011-460b-85f3-4013c407d5b7)
 - Maze 4: ![maze1](https://github.com/user-attachments/assets/c2b5909e-89f7-4f40-8a8f-e728bdd84b2e)
 - Maze 5: ![maze5](https://github.com/user-attachments/assets/0d18e2d8-1897-4949-be41-f44712bf42a9)
@@ -112,7 +112,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⌨️ Authors
 
-- [Antenor, Justine](https://github.com/Tiiinnn)
-- [Bunqnuin, Theodore Von Joshua](https://github.com/BunquinTheodore)
-- [Saludo, Noel Zyrence](https://github.com/NoelSaludo)
-- [Soriano, Albert JR](https://github.com/Soriano-San)
+| Name                          | GitHub                                                | SR Code     |
+|-------------------------------|-------------------------------------------------------|-------------|
+| Antenor, Justine              | [Tiiinnn](https://github.com/Tiiinnn)                 | 23-05942    |
+| Bunqnuin, Theodore Von Joshua | [BunquinTheodore](https://github.com/BunquinTheodore) | 23-03102    |
+| Saludo, Noel Zyrence          | [NoelSaludo](https://github.com/NoelSaludo)           | 23-08992    |
+| Soriano, Albert JR            | [Soriano-San](https://github.com/Soriano-San)         | 23-03104    |
