@@ -27,6 +27,16 @@ void displayMainMenu()
     cout << "3. Exit\n";
 }
 
+void checkCin()
+{
+    if(cin.fail())
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid choice.\n";
+    }
+}
+
 paths startMazeSolver(vector<Graph>& mazes)
 {
     Graph *selectedMaze;
@@ -36,14 +46,7 @@ paths startMazeSolver(vector<Graph>& mazes)
     while (true)
     {
         int choice = getUserChoice();
-
-        if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid choice.\n";
-            continue;
-        }
+        checkCin();
 
         switch (choice)
         {
@@ -53,6 +56,7 @@ paths startMazeSolver(vector<Graph>& mazes)
                 int mazeChoice;
                 cout << "Select a maze to solve (1-" << mazes.size() << "): ";
                 cin >> mazeChoice;
+                checkCin();
                 selectedMaze = &mazes[mazeChoice - 1];
                 if (mazeChoice < 1 || mazeChoice > mazes.size())
                 {
@@ -63,6 +67,7 @@ paths startMazeSolver(vector<Graph>& mazes)
                 cout << "1. Solve with DFS\n";
                 cout << "2. Solve with BFS\n";
                 cin >> solveChoice;
+                checkCin();
                 if (solveChoice == 1)
                 {
                     solution = DFS(*selectedMaze);
