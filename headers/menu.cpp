@@ -14,10 +14,7 @@ void displayAllMazes(const vector<Graph>& mazes)
 int getUserChoice()
 {
     int choice;
-    cout << "Choose an option:\n";
-    cout << "1. Start\n";
-    cout << "2. View Maze\n";
-    cout << "3. Exit\n";
+    displayMainMenu();
     cin >> choice;
     return choice;
 }
@@ -39,6 +36,15 @@ paths startMazeSolver(vector<Graph>& mazes)
     while (true)
     {
         int choice = getUserChoice();
+
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice.\n";
+            continue;
+        }
+
         switch (choice)
         {
             case 1:
