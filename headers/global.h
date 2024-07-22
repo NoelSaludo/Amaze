@@ -2,7 +2,6 @@
 #include <vector>
 #include <fstream>
 #include <limits>
-#include <raylib.h>
 #include <cstring>
 #include <queue>
 #include <chrono>
