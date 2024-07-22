@@ -2,6 +2,15 @@
 
 using namespace std;
 
+Graph::MazeStruct Graph::StoreDetails() {
+    MazeStruct MazeDetails;
+    MazeDetails.highest_tile = TileMaxSize;
+    MazeDetails.MazeEdges = Edges;
+    MazeDetails.Maze_Start = TileStart;
+    MazeDetails.Maze_End = TileEnd;
+    return MazeDetails;
+}
+
 Graph::Graph(string file)
 {
     LoadGraph(file);
@@ -25,6 +34,11 @@ void Graph::AddEdge(int x, int y)
     }
 }
 
+void Graph::PlotEdge(int x, int y)
+{
+this->Edges.push_back(std::pair<int,int>(x,y));
+// cout << "PUSH BACK ("<<x<<","<<y<<")\n";
+}
 
 
 void Graph::LoadGraph(string &file)
@@ -48,7 +62,20 @@ void Graph::LoadGraph(string &file)
     }
     fin.close();
     this->ReadLines(lines);
+
+    //pwede din no? like no joke
+    //create ka struct, print mo struct
+    //gawa ka linked list, naka store sa graph, access mo yung linked list pag nag dfs na stostore mo pa dun yung path array,
+    //traverse eh first head, sabay for (next ng next node), yun then get necessary details sa graph.h, pass mo variable
+
+    //gets kona
+    //main func, display traverse
+    //GetDetailsTraverse = graph::Struct linked lists
+    //then store mo yung na pull nun sa main
+    //kunwari select - userhcoice, for (4 maze4), passa mo yung var from graph to display, sabay gawa ka ng func sa display na SetDetails (int x, y vector<pair,pair>)
 }
+
+
 void Graph::ReadLines(vector<string> lines)
 {
     for (int i = 0; i < lines.size(); i++)
@@ -58,7 +85,11 @@ void Graph::ReadLines(vector<string> lines)
             for (int j = i + 1; j < lines.size(); j++)
             {
                 if (lines[j] == "#edge")
+                {
+                    this->TileMaxSize = (j- 1);
+                    //cout << "HIGHEST INDEX IS: " << j << "\n";
                     break;
+                }
                 string data = lines[j];
                 this->AddData(data);
             }
@@ -81,6 +112,7 @@ void Graph::ReadLines(vector<string> lines)
                     int y = stoi(line.substr(commaIndex + 1));
                     
                     this->AddEdge(x, y);
+                    this->PlotEdge(x,y);
                 }
                 catch(const std::exception& e)
                 {
@@ -93,11 +125,18 @@ void Graph::ReadLines(vector<string> lines)
         {
             string start = lines[i+1];
             this->Start = find(Data.begin(), Data.end(), start) - Data.begin();
+
+            // cout << "start is: " << Start << "\n";
+            this->TileStart = Start;
         }
         if(lines[i] == "#end")
         {
             string end = lines[i+1];
             this->End = find(Data.begin(), Data.end(), end) - Data.begin();
+
+            // cout << "end is: " << End << '\n';
+            this->TileEnd = End;
+
         }
     }
 }
@@ -135,4 +174,5 @@ void Graph::PrintGraph()
 int Graph::GetSize() const
 {
     return size;
+    
 }

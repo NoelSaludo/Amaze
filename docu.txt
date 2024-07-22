@@ -1,0 +1,42 @@
+ //paganahin mo muna display.h try mo icall dito sa main
+        //Display GetDetails(struct param)
+
+        //sa GetDetails(){ create linked list}
+
+        //sa display maze1 or 4, get choice, Display Maze(choice)
+        //ipasa mo choice sa GetInfo()
+        //Display InitializeParameters
+        //garne, MazeInfo -> create structs
+        //AssignDetails(choice sa counter) -> area_maze = from.struct, tile = current->data
+        //Display MazeDisplay(choice/num 4,3,2,1 , BFS path/DFS path ), call AssignDetails sa loob ng MazeDisplay()
+        //get data from graph, store data, pass data to display.h
+        //edi simple na, Display MazeInfo(Struct Param)
+
+//store mo sa linked lists, traverse mo yung linked list sa main, get mo yung data nun tas ipasa mo sa display.h
+//mag manual kana siguro, isang func sa main na TraverseList(SelectedMaze)
+//ano kasi to, after lang macall yung dfs and bfs, tska lang dapat mapriprint yung path
+//need mong makuha kung maze1, maze2, then yung path bfs/dfs, garne garne lang jr medyo easy like as in
+//traverse mo yung list, tapos add ka data sa list
+//maze1.BFSPATH = yung bfs, tas DFSPATH,
+//sabay func call mo after dfs/bfs ang maze
+//by monday ng hapon tapos to, tues na ulit balik ko
+//by tues powerpoint naman na tayo and practice present
+//by wed aral malala
+//tom, aral malala still paguwi, pset solving and familiarization unto ppt need ko
+//then code till linked_list storage and added functionality to be passed sa display.h
+//monday, full focus, integrate display.h, get bfs/dfs path and do animations sa raylibs
+//basta tom eh psets muna, integ asikaso atleast familiarization sabay konting read ng code at linked list traversal
+//monday eh end to
+//tues end presentation, prepare for presentation at aral integ till wed gabi
+
+
+
+
+-----------------------------------------------------------------------------------
+//user choice param, sabay gawa ka bagong object, current->path, dagdag ka data type, 
+    //honestly pwede, lahat nasa struct
+    //for loop agad ng current
+    // sa loop eh 
+
+    PWEDE MO IINTEGRATE NO ASSIGN VALUES, BUT VBALUES NUNG GHAGAMITN SA MAZE eh
+    CURRENT-area_maze

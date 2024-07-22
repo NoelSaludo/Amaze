@@ -17,63 +17,27 @@ int main()
     vector<Graph> mazes;
     Graph *selectedMaze;
     paths data;
-
-
-    while (true)
-    {
-        int choice;
-        cout << "1. Register\n2. Log-in\n3. Exit\nEnter your choice: ";
-        cin >> choice;
-
-        User user;
-        if (choice == 1)
-        {
-            cout << "Enter username: ";
-            cin >> user.username;
-            cout << "Enter password: ";
-            cin >> user.password;
-            registerUser(users, user);
-        }
-        else if (choice == 2)
-        {
-            cout << "Enter username: ";
-            cin >> user.username;
-            cout << "Enter password: ";
-            cin >> user.password;
-            if (logIn(users, user))
-            {
-                cout << "Log-in successful.\n";
-                break;
-            }
-            else
-            {
-                cout << "Invalid username or password.\n";
-            }
-        }
-        else if (choice == 3)
-        {
-            cout << "Exiting program....";
-            return 0;
-        }
-        else
-        {
-            cout << "Invalid choice\n";
-        }
-    }
+    Display display;
 
     // Load each maze from file
     for (const auto &file : mazeFiles)
     {
         Graph maze(file);
         mazes.push_back(maze);
+        Graph::MazeStruct mazeDetails = maze.StoreDetails();
+        display.GetDetails(mazeDetails); 
     }
 
+    
+    //need mopa ng isa pang menu, if terminal ang choice or raylibs
     // Display loaded mazes
     displayAllMazes(mazeFiles);
 
     // Get user choice for the maze and algorithm
     int mazeChoice = getUserChoice("Choose a maze (1-4): ", mazes.size());
     mazeChoice--; // Adjust for 0-based indexing
+
+    //mazechoice++;
 
     int algorithmChoice = getUserChoice("Choose an algorithm:\n1. Depth-First Search (DFS)\n2. Breadth-First Search (BFS)\n Enter choice: ", 2);
 
@@ -91,29 +55,35 @@ int main()
     }
 
     printPath(data);
-
-    InitWindow(screenWidth, screenHeight, "Maze Solver");
-
-    SetTargetFPS(60);
-    
-    while (!WindowShouldClose())
-    {
-        //updates here
-
-
-
-
-
-        //drawing on the screen
-        BeginDrawing();
-
-        ClearBackground(RAYWHITE);
-
-        DrawText("Maze Solver", 10, 10, 20, DARKGRAY);
-
-        EndDrawing();
+    cout << "CHOSEN MAZE: " << mazeChoice + 1 <<'\n';
+    for(int i = 0; i < data.Result.size();i++){
+        cout << data.Result[i] << " ";
     }
 
+    display.AssignValue(mazeChoice+1, data.Result);
+    display.MazeDisplay();
+    cout << "press a key";
+    getch();
+    
+
+    InitWindow(screenWidth, screenHeight, "Maze Solver");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+        
+        ClearBackground(RAYWHITE);
+        display.MazeSimulate(screenWidth, screenHeight); // Draw the maze
+        
+        EndDrawing();       
+        
+           
+           
+       
+
+        
+    }
     CloseWindow();
 
     return 0;
@@ -199,3 +169,5 @@ Graph loadMaze(const string &filename)
     Graph maze(mazeData); // Create a Graph object with the maze data
     return maze;
 }
+
+//debug mo yung other mazes, tingin ko nasa variables lang problem
