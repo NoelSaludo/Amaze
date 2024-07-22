@@ -4,12 +4,16 @@ using namespace std;
 
 void displayAllMazes(const vector<Graph> &mazes)
 {
+    cout << "┌──────────────────────────────────────────────┐" << endl;
+    cout << "│                 Available Mazes              │" << endl;
+    cout << "├──────────────────────────────────────────────┤" << endl;
     for (int i = 0; i < mazes.size(); i++)
     {
-        cout << "Maze " << i + 1 << "\n";
-        cout << "\n";
+        cout << "│ Maze " << i + 1 << "                     │" << endl;
     }
+    cout << "└──────────────────────────────────────────────┘" << endl;
 }
+
 
 int getUserChoice()
 {
@@ -56,77 +60,97 @@ void displayMainMenu()
          << "                              -#############             #############+" << endl
          << "                              ............-               ............-" << endl
          << "                                                AMAZE                                " << endl;
-        drawMenuHeader("Main Menu");
-        drawMenuOption("1. Start");
-        drawMenuOption("2. View Maze");
-        drawMenuOption("3. Exit");
-        drawMenuFooter();
-        cout << "Enter your choice: ";
+    cout << "┌──────────────────────────────────────────────┐" << endl;
+    cout << "│                   AMAZE                      │" << endl;
+    cout << "├──────────────────────────────────────────────┤" << endl;
+    cout << "│                   Main Menu                  │" << endl;
+    cout << "│                                              │" << endl;
+    cout << "│ 1. Start                                     │" << endl;
+    cout << "│ 2. View Maze                                 │" << endl;
+    cout << "│ 3. Exit                                      │" << endl;
+    cout << "└──────────────────────────────────────────────┘" << endl;
+    cout << "Enter your choice: ";
 
 }
 
-    paths startMazeSolver(vector<Graph> & mazes)
+    paths startMazeSolver(vector<Graph> &mazes)
+{
+    Graph *selectedMaze;
+    paths solution;
+    int solveChoice;
+
+    while (true)
     {
-        Graph *selectedMaze;
-        paths solution;
-        int solveChoice;
+        int choice = getUserChoice();
 
-        while (true)
+        switch (choice)
         {
-            int choice = getUserChoice();
-
-            switch (choice)
+        case 1:
+            displayAllMazes(mazes);
+            int mazeChoice;
+            cout << "┌──────────────────────────────────────────────┐" << endl;
+            cout << "│ Select a maze to solve (1-" << mazes.size() << "): ";
+            cout << "└──────────────────────────────────────────────┘" << endl;
+            cout << "Enter choice: ";
+            cin >> mazeChoice;
+            checkCin();
+            if (mazeChoice < 1 || mazeChoice > mazes.size())
             {
-            case 1:
-                displayAllMazes(mazes);
-                int mazeChoice;
-                cout << "Select a maze to solve (1-" << mazes.size() << "): ";
-                cin >> mazeChoice;
-                checkCin();
-                selectedMaze = &mazes[mazeChoice - 1];
-                if (mazeChoice < 1 || mazeChoice > mazes.size())
-                {
-                    cout << "Invalid maze choice.\n";
-                    break;
-                }
-                cout << "Choose a solving algorithm:\n";
-                cout << "1. Solve with DFS\n";
-                cout << "2. Solve with BFS\n";
-                cin >> solveChoice;
-                checkCin();
-                if (solveChoice == 1)
-                {
-                    solution = DFS(*selectedMaze);
-                }
-                else if (solveChoice == 2)
-                {
-                    solution = BFS(*selectedMaze);
-                }
-                else
-                {
-                    cout << "Invalid choice.\n";
-                    break;
-                }
-                cout << "Solved Path: ";
-                for (int node : solution.Result)
-                {
-                    cout << node << " ";
-                }
-                cout << "\n";
-                cout << "Time taken: " << solution.time << " ms\n";
-                return solution;
-                break;
-            case 2:
-                displayAllMazes(mazes);
-                break;
-            case 3:
-                cout << "Exiting the program.\n";
-                exit(0);
-                break;
-            default:
-                cout << "Invalid choice.\n";
+                cout << "┌──────────────────────────────────────────────┐" << endl;
+                cout << "│ Invalid maze choice.                         │" << endl;
+                cout << "└──────────────────────────────────────────────┘" << endl;
                 break;
             }
+            selectedMaze = &mazes[mazeChoice - 1];
+            cout << "┌──────────────────────────────────────────────┐" << endl;
+            cout << "│ Choose a solving algorithm:                  │" << endl;
+            cout << "│ 1. Solve with DFS                            │" << endl;
+            cout << "│ 2. Solve with BFS                            │" << endl;
+            cout << "└──────────────────────────────────────────────┘" << endl;
+            cin >> solveChoice;
+            checkCin();
+            if (solveChoice == 1)
+            {
+                solution = DFS(*selectedMaze);
+            }
+            else if (solveChoice == 2)
+            {
+                solution = BFS(*selectedMaze);
+            }
+            else
+            {
+                cout << "┌──────────────────────────────────────────────┐" << endl;
+                cout << "│ Invalid choice.                              │" << endl;
+                cout << "└──────────────────────────────────────────────┘" << endl;
+                break;
+            }
+            cout << "┌──────────────────────────────────────────────┐" << endl;
+            cout << "│ Solved Path: ";
+            for (int node : solution.Result)
+            {
+                cout << node << " ";
+            }
+            cout << "\n";
+            cout << "│ Time taken: " << solution.time << " ms               │" << endl;
+            cout << "└──────────────────────────────────────────────┘" << endl;
+            return solution;
+            break;
+        case 2:
+            displayAllMazes(mazes);
+            break;
+        case 3:
+            cout << "┌──────────────────────────────────────────────┐" << endl;
+            cout << "│ Exiting the program.                         │" << endl;
+            cout << "└──────────────────────────────────────────────┘" << endl;
+            exit(0);
+            break;
+        default:
+            cout << "┌──────────────────────────────────────────────┐" << endl;
+            cout << "│ Invalid choice.                              │" << endl;
+            cout << "└──────────────────────────────────────────────┘" << endl;
+            break;
         }
-        return solution;
     }
+    return solution;
+}
+
