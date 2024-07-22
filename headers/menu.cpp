@@ -2,35 +2,27 @@
 
 using namespace std;
 
-void displayAllMazes(const vector<Graph>& mazes)
+void displayAllMazes(const vector<Graph> &mazes)
 {
     for (int i = 0; i < mazes.size(); i++)
     {
-        cout << "Maze " << i+1 << "\n";
+        cout << "Maze " << i + 1 << "\n";
         cout << "\n";
     }
 }
 
 int getUserChoice()
 {
-    int choice;
+    int *choice = new int;
     displayMainMenu();
-    cin >> choice;
-    return choice;
-}
-
-void displayMainMenu()
-{
-    
-    cout << "Main Menu\n";
-    cout << "1. Start\n";
-    cout << "2. View Maze\n";
-    cout << "3. Exit\n";
+    cin >> *choice;
+    checkCin();
+    return *choice;
 }
 
 void checkCin()
 {
-    if(cin.fail())
+    if (cin.fail())
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -38,21 +30,54 @@ void checkCin()
     }
 }
 
-paths startMazeSolver(vector<Graph>& mazes)
+void displayMainMenu()
 {
-    Graph *selectedMaze;
-    paths solution;
-    int solveChoice;
+    cout << "                                                 " << endl
+         << "                                                 ###" << endl
+         << "                                                #####" << endl
+         << "                                               ### +##" << endl
+         << "                                              ###   +##" << endl
+         << "                                                     ###" << endl
+         << "                                                      ###" << endl
+         << "                                                       ##+" << endl
+         << "                                          -##########   ##+" << endl
+         << "                                         .##.      ###   ##+" << endl
+         << "                                        .##.              ##-" << endl
+         << "                                        ##-   ##-          ##-" << endl
+         << "                                       ##-   ##+...........-##." << endl
+         << "                                      ##-   ###################." << endl
+         << "                                     ##-                     -##" << endl
+         << "                                    ########.                 +##" << endl
+         << "                                   ###--+##.             .##.  -##" << endl
+         << "                                  ###   ##-  +#########+  -##.  +##" << endl
+         << "                                 ###   ##-  +##            -########" << endl
+         << "                                +##        +##                    ###" << endl
+         << "                               +##        +##           ##+        ###" << endl
+         << "                              -#############             #############+" << endl
+         << "                              ............-               ............-" << endl
+         << "                                                AMAZE                                " << endl;
+        drawMenuHeader("Main Menu");
+        drawMenuOption("1. Start");
+        drawMenuOption("2. View Maze");
+        drawMenuOption("3. Exit");
+        drawMenuFooter();
+        cout << "Enter your choice: ";
 
-    while (true)
+}
+
+    paths startMazeSolver(vector<Graph> & mazes)
     {
-        int choice = getUserChoice();
-        checkCin();
+        Graph *selectedMaze;
+        paths solution;
+        int solveChoice;
 
-        switch (choice)
+        while (true)
         {
-            case 1:
+            int choice = getUserChoice();
+
+            switch (choice)
             {
+            case 1:
                 displayAllMazes(mazes);
                 int mazeChoice;
                 cout << "Select a maze to solve (1-" << mazes.size() << "): ";
@@ -91,7 +116,6 @@ paths startMazeSolver(vector<Graph>& mazes)
                 cout << "Time taken: " << solution.time << " ms\n";
                 return solution;
                 break;
-            }
             case 2:
                 displayAllMazes(mazes);
                 break;
@@ -102,7 +126,7 @@ paths startMazeSolver(vector<Graph>& mazes)
             default:
                 cout << "Invalid choice.\n";
                 break;
+            }
         }
+        return solution;
     }
-    return solution;
-}

@@ -4,31 +4,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout << "                                                 " << endl
-         << "                                                 ###" << endl
-         << "                                                #####" << endl
-         << "                                               ### +##" << endl
-         << "                                              ###   +##" << endl
-         << "                                                     ###" << endl
-         << "                                                      ###" << endl
-         << "                                                       ##+" << endl
-         << "                                          -##########   ##+" << endl
-         << "                                         .##.      ###   ##+" << endl
-         << "                                        .##.              ##-" << endl
-         << "                                        ##-   ##-          ##-" << endl
-         << "                                       ##-   ##+...........-##." << endl
-         << "                                      ##-   ###################." << endl
-         << "                                     ##-                     -##" << endl
-         << "                                    ########.                 +##" << endl
-         << "                                   ###--+##.             .##.  -##" << endl
-         << "                                  ###   ##-  +#########+  -##.  +##" << endl
-         << "                                 ###   ##-  +##            -########" << endl
-         << "                                +##        +##                    ###" << endl
-         << "                               +##        +##           ##+        ###" << endl
-         << "                              -#############             #############+" << endl
-         << "                              ............-               ............-" << endl;
-
-
     vector<Graph> mazes{
         Graph("../resources/maze1.txt"),
         Graph("../resources/maze2.txt"),
@@ -51,3 +26,4 @@ int main(int argc, char *argv[])
     CloseWindow();
     return 0;
 }
+
