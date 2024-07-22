@@ -51,7 +51,7 @@ add_executable(Amaze ${SOURCE}
     # ${HEADERS}
     )
 target_include_directories(Amaze PRIVATE headers)
-target_link_libraries(Amaze PRIVATE raylib -static-libgcc -static-libstdc++ globalHeaders)
+target_link_libraries(Amaze PRIVATE raylib globalHeaders)
 
 install(TARGETS Amaze RUNTIME DESTINATION bin)
 install(DIRECTORY resources DESTINATION resouces)
