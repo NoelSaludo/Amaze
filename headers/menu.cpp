@@ -21,6 +21,7 @@ int getUserChoice()
 
 void displayMainMenu()
 {
+    
     cout << "Main Menu\n";
     cout << "1. Start\n";
     cout << "2. View Maze\n";
