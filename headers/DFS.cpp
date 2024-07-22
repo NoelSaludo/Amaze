@@ -14,14 +14,14 @@ paths DFS(const Graph &graph)
 
     bool flag = false;
 
+    auto start = chrono::high_resolution_clock::now();
     DFSutil(graph, startIndex, visited, size, path, flag, prev);
+    auto end = chrono::high_resolution_clock::now();
 
     paths result;
     result.traverseList = path;
 
-    auto start = chrono::high_resolution_clock::now();
     vector<int> resultpath = Solve(prev, endIndex);
-    auto end = chrono::high_resolution_clock::now();
 
     result.Result = resultpath;
     result.start = startIndex;
