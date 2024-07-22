@@ -1,4 +1,4 @@
-![Logo](https://th.bing.com/th/id/OIP.l08hsVrUF_SoftSujEt7aQHaDq?w=349&h=172&c=7&r=0&o=5&dpr=1.1&pid=1.7)
+![header logo (1) (1)](https://github.com/user-attachments/assets/57a340ba-155d-4689-ab77-7b8b5902b0c3)
 
 # MAZE SOLVER SIMULATION
 
