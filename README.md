@@ -44,11 +44,21 @@ This project outlines the development of a C++ based simulation tool for maze pa
 - `Ninja`
 
 ## ⚔️ Maze Options
-- Maze 1: ![maze4](https://github.com/user-attachments/assets/84c5bbe4-9f35-4e58-9ee6-048c18288d30)
-- Maze 2: ![maze3](https://github.com/user-attachments/assets/798003f7-6135-48e9-92ed-cf2807af5c26)
-- Maze 3: ![maze2](https://github.com/user-attachments/assets/a8eb900e-e011-460b-85f3-4013c407d5b7)
-- Maze 4: ![maze1](https://github.com/user-attachments/assets/c2b5909e-89f7-4f40-8a8f-e728bdd84b2e)
-- Maze 5: ![maze5](https://github.com/user-attachments/assets/0d18e2d8-1897-4949-be41-f44712bf42a9)
+- Maze 1:
+
+  ![maze4](https://github.com/user-attachments/assets/84c5bbe4-9f35-4e58-9ee6-048c18288d30)
+- Maze 2
+
+  ![maze3](https://github.com/user-attachments/assets/798003f7-6135-48e9-92ed-cf2807af5c26)
+- Maze 3:
+
+  ![maze2](https://github.com/user-attachments/assets/a8eb900e-e011-460b-85f3-4013c407d5b7)
+- Maze 4:
+
+   ![maze1](https://github.com/user-attachments/assets/c2b5909e-89f7-4f40-8a8f-e728bdd84b2e)
+- Maze 5:
+
+  ![maze5](https://github.com/user-attachments/assets/0d18e2d8-1897-4949-be41-f44712bf42a9)
 
 ## 🔧 Installation Instructions
 
