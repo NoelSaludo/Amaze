@@ -1,10 +1,9 @@
-#include "headers/global.h"
+#include "global.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-
     vector<Graph> mazes{
         Graph("../resources/maze1.txt"),
         Graph("../resources/maze2.txt"),
@@ -27,3 +26,4 @@ int main(int argc, char *argv[])
     CloseWindow();
     return 0;
 }
+

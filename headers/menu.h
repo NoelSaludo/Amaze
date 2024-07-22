@@ -9,5 +9,5 @@ void displayAllMazes(const std::vector<Graph>& mazes);
 int getUserChoice();
 paths startMazeSolver(std::vector<Graph>& mazes);
 void displayMainMenu();
-
+void checkCin();
 #endif

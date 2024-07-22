@@ -20,21 +20,22 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
   endif()
 endif()
 
+add_subdirectory(headers)
 
 set(SOURCE main.cpp)
-set(HEADERS 
-    headers/global.h
-    headers/graph.h 
-    headers/BFS.h 
-    headers/DFS.h 
-    headers/graph.cpp 
-    headers/BFS.cpp 
-    headers/DFS.cpp 
-    headers/solver.h 
-    headers/solver.cpp 
-    headers/menu.cpp 
-    headers/menu.h
-)
+# set(HEADERS 
+#     headers/global.h
+#     headers/graph.h 
+#     headers/BFS.h 
+#     headers/DFS.h 
+#     headers/graph.cpp 
+#     headers/BFS.cpp 
+#     headers/DFS.cpp 
+#     headers/solver.h 
+#     headers/solver.cpp 
+#     headers/menu.cpp 
+#     headers/menu.h
+# )
 
 set(MAZE_DATA 
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze1.txt 
@@ -46,14 +47,16 @@ set(MAZE_DATA
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(Amaze ${SOURCE} ${HEADERS})
-target_link_libraries(Amaze PRIVATE raylib)
+add_executable(Amaze ${SOURCE} 
+    # ${HEADERS}
+    )
+target_include_directories(Amaze PRIVATE headers)
+target_link_libraries(Amaze PRIVATE raylib -static-libgcc -static-libstdc++ globalHeaders)
 
 install(TARGETS Amaze RUNTIME DESTINATION bin)
 install(DIRECTORY resources DESTINATION resouces)
 
 include(InstallRequiredSystemLibraries)
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
 set(CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
 set(CPACK_GENERATOR "NSIS")
