@@ -1,4 +1,6 @@
-![header logo (1) (1)](https://github.com/user-attachments/assets/57a340ba-155d-4689-ab77-7b8b5902b0c3)
+
+https://github.com/user-attachments/assets/68c82fc8-6348-4cb3-9f7d-08ad28212dcc
+
 
 # MAZE SOLVER SIMULATION
 
@@ -24,6 +26,9 @@ This project outlines the development of a C++ based simulation tool for maze pa
 - **Pathfinding Algorithm**: Implementation of efficient pathfinding algorithms to calculate optimal routes.
 - **Visualization**: Clear and visually appealing display of the calculated path.
 - **User Input Handling**: Smooth user interaction for selecting mazes and algorithms, with robust error handling.
+- Desired output: 
+
+![ito](https://github.com/user-attachments/assets/76a882ae-6198-40a4-be2c-01d99306f34b)
 
 ## 💻 Technologies
 
