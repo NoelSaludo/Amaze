@@ -78,6 +78,8 @@ void Graph::ReadLines(vector<string> lines)
                     int x = stoi(line.substr(0, commaIndex));
                     int y = stoi(line.substr(commaIndex + 1));
 
+                    this->EdgeList.push_back(make_pair(x, y));
+
                     this->AddEdge(x, y);
                 }
                 catch (const std::exception &e)

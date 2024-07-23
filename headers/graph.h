@@ -15,6 +15,7 @@ public:
     std::vector<std::string> Data;
     std::vector<std::vector<int>> Matrix;
     int GetSize() const;
+    std::vector<std::pair<int, int>> EdgeList;
 
 private:
     int size;

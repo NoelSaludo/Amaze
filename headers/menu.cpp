@@ -134,6 +134,7 @@ paths startMazeSolver(vector<Graph> &mazes)
             cout << "\n";
             cout << "| Time taken: " << solution.time << " ms               |" << endl;
             cout << "----------------------------------------------" << endl;
+            solution.maze = selectedMaze;
             return solution;
             break;
         case 2:
