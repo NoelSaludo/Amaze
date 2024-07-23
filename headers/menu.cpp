@@ -9,7 +9,7 @@ void displayAllMazes(const vector<Graph> &mazes)
     cout << "----------------------------------------------" << endl;
     for (int i = 0; i < mazes.size(); i++)
     {
-        cout << "| Maze " << i + 1 << "                                |" << endl;
+        cout << "| Maze " << i + 1 << "                                     |" << endl;
     }
     cout << "----------------------------------------------" << endl;
 }
@@ -101,6 +101,7 @@ paths startMazeSolver(vector<Graph> &mazes)
                 cout << "----------------------------------------------" << endl;
                 cout << "| Invalid maze choice.                       |" << endl;
                 cout << "----------------------------------------------" << endl;
+                cin.ignore(2);
                 break;
             }
             selectedMaze = &mazes[mazeChoice - 1];
@@ -130,6 +131,7 @@ paths startMazeSolver(vector<Graph> &mazes)
                 cout << "----------------------------------------------" << endl;
                 cout << "| Invalid choice.                            |" << endl;
                 cout << "----------------------------------------------" << endl;
+                cin.ignore(2);
                 break;
             }
             cout << "----------------------------------------------" << endl;
@@ -146,6 +148,8 @@ paths startMazeSolver(vector<Graph> &mazes)
             break;
         case 2:
             displayAllMazes(mazes);
+            cout << "Press enter to continue...";
+            cin.ignore(2);
             break;
         case 3:
             cout << "----------------------------------------------" << endl;
@@ -157,6 +161,7 @@ paths startMazeSolver(vector<Graph> &mazes)
             cout << "----------------------------------------------" << endl;
             cout << "| Invalid choice.                            |" << endl;
             cout << "----------------------------------------------" << endl;
+            cin.ignore(2);
             break;
         }
     }

@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
 {
     while (true)
     {
-        if (system("clear"))
-            system("cls");
-
+        if(system("clear")) system("cls");
         vector<Graph> mazes{
             Graph("../resources/maze1.txt"),
             Graph("../resources/maze2.txt"),
@@ -128,7 +126,7 @@ int main(int argc, char *argv[])
                         if (isSolved)
                         {
                             DrawText("Solved", 10, 10, 60, RED);
-                            DrawText("Press Escape to restart", 10, 1100 - 200, 60, BLUE);
+                            DrawText("Press Escape to restart", 10, 1100 - 500, 60, BLUE);
                         }
                     }
                     count++;
