@@ -10,15 +10,12 @@ paths BFS(const Graph &g){
     int startIndex = g.Start;
     int endIndex = g.End;
 
-    auto start = chrono::high_resolution_clock::now();
     paths result = BFSUtil(g,startIndex, visited, nextToVisit, previousList);
-    auto end = chrono::high_resolution_clock::now();
     result.start = startIndex;
     result.end = endIndex;
     
     vector<int> path = Solve(previousList,endIndex);
 
-    result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     result.Result = path;
     return result;
 }
