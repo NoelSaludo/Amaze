@@ -21,20 +21,6 @@ int main(int argc, char *argv[])
 
     vector<vector<int>> maze = convertTo2D(solution.maze->Data);
 
-    cout << "Maze: " << endl;
-    for (int i = 0; i < maze.size(); i++)
-    {
-        for (int j = 0; j < maze[i].size(); j++)
-        {
-            if (maze[i][j] <= 9)
-            {
-                cout << " " << maze[i][j] << " ";
-                continue;
-            }
-            cout << maze[i][j] << " ";
-        }
-        cout << endl;
-    }
     InitWindow(1100, 1100, "Maze Solver");
     SetTargetFPS(60);
     while (!WindowShouldClose())
