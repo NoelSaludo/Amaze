@@ -46,7 +46,4 @@ void DFSutil(Graph graph, int start, vector<bool>& visited, int size, vector<int
         }
     }
 
-    if (!flag) { // If no path to end node found from this node, backtrack
-        path.pop_back();
-    }
 }
