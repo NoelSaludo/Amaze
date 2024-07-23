@@ -71,13 +71,16 @@ int main(int argc, char *argv[])
                     find(edgeList.begin(), edgeList.end(), make_pair(left, current)) != edgeList.end()){
                     DrawRectangle(posx-10, posy, cellSizeX, cellSizeY-10, RAYWHITE);
                 }
-
+                else{
+                    DrawRectangle(posx, posy, cellSizeX-10, cellSizeY-10, RAYWHITE);
+                }
                 if(maze[i][j] == solution.start){
                     DrawRectangle(posx, posy, cellSizeX-10, cellSizeY-10, GREEN);
                 }
                 if(maze[i][j] == solution.end){
                     DrawRectangle(posx, posy, cellSizeX-10, cellSizeY-10, RED);
                 } 
+                DrawText(TextFormat("%d", maze[i][j]), posx+cellSizeX/2-10, posy+cellSizeY/2-10, 20, BLACK);
 
 
             }

@@ -10,7 +10,6 @@ typedef struct{
     int start;
     int end;
     std::vector<int> Result;
-    int64_t time;
     Graph *maze;
 }paths;
 

@@ -79,6 +79,7 @@ paths startMazeSolver(vector<Graph> &mazes)
     Graph *selectedMaze;
     paths solution;
     int solveChoice;
+    int64_t timeTaken;
 
     while (true)
     {
@@ -112,11 +113,17 @@ paths startMazeSolver(vector<Graph> &mazes)
             checkCin();
             if (solveChoice == 1)
             {
+                auto start = chrono::high_resolution_clock::now();
                 solution = DFS(*selectedMaze);
+                auto end = chrono::high_resolution_clock::now();
+                timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
             }
             else if (solveChoice == 2)
             {
+                auto start = chrono::high_resolution_clock::now();
                 solution = BFS(*selectedMaze);
+                auto end = chrono::high_resolution_clock::now();
+                timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
             }
             else
             {
@@ -132,7 +139,7 @@ paths startMazeSolver(vector<Graph> &mazes)
                 cout << node << " ";
             }
             cout << "\n";
-            cout << "| Time taken: " << solution.time << " ms               |" << endl;
+            cout << "| Time taken: " << timeTaken << " ms               |" << endl;
             cout << "----------------------------------------------" << endl;
             solution.maze = selectedMaze;
             return solution;
