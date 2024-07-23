@@ -30,6 +30,8 @@ set(MAZE_DATA
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze3.txt 
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze4.txt 
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze5.txt 
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze6.txt
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze7.txt
         )
 file(COPY ${MAZE_DATA}
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
