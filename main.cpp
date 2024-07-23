@@ -27,13 +27,16 @@ int main(int argc, char *argv[])
         int count = 0;
         bool isTraverse = false;
         bool isSolved = false, start = false;
+        auto edgeList = solution.maze->EdgeList;
+        int cellSizeY = 80, cellSizeX = 80, winX, winY;
+        int size = sqrt(solution.maze->Data.size());
+        Color bgBanner{0, 0, 0, 50};
 
-        InitWindow(1100, 1100, "Maze Solver");
+
+        InitWindow(cellSizeX*size, cellSizeY*size, "Maze Solver");
         SetTargetFPS(60);
         while (!WindowShouldClose())
         {
-            auto edgeList = solution.maze->EdgeList;
-            int cellSizeY = 90, cellSizeX = 90;
             BeginDrawing();
             ClearBackground(BLACK);
             if (start)
@@ -125,8 +128,10 @@ int main(int argc, char *argv[])
                         DrawText(TextFormat("%d", maze[i][j]), posx + cellSizeX / 2 - 10, posy + cellSizeY / 2 - 10, 20, BLACK);
                         if (isSolved)
                         {
-                            DrawText("Solved", 10, 10, 60, RED);
-                            DrawText("Press Escape to restart", 10, 1100 - 500, 60, BLUE);
+                            DrawRectangle(10, 10, 500, 100, bgBanner);
+                            DrawText("Solved", 10, 10, 30, RED);
+                            DrawRectangle(10, 110, 500, 100, bgBanner);
+                            DrawText("Press Escape to restart", 10, 110, 30, RED);
                         }
                     }
                     count++;
@@ -134,7 +139,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                DrawText("Press Enter to start", (1100 / 2) - 500, 1100 / 2, 60, RED);
+                DrawText("Press Enter to start", 10,10, 30, RED);
                 if (IsKeyPressed(KEY_ENTER))
                     start = true;
             }
