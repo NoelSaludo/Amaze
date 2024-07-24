@@ -2,6 +2,7 @@ debug-build
 build
 cmake-build-debug
 _CPack_Packages
+release-build 
 
 .vscode
 .idea
