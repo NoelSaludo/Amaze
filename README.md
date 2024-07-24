@@ -5,9 +5,9 @@ https://github.com/user-attachments/assets/68c82fc8-6348-4cb3-9f7d-08ad28212dcc
 # MAZE SOLVER SIMULATION
 
 ## 🎯 Introduction 
-This project outlines the development of a C++ based simulation tool for maze pathfinding. The simulation enables users to learn how basic pathfinding works using graphs. This project aims to educate users on basic graph traversal and pathfinding algorithms, providing a hands-on learning experience.
+This project outlines the development of a C++ based simulation tool for maze pathfinding. The simulation enables users to learn how basic pathfinding works using graphs. This project aims to educate users on basic graph traversal and pathfinding algorithms, providing a hands-on learning experience📚.
 
-## Objectives
+## 🔎Objectives
 
 | No.                         | Objective                                                                                          |
 |-----------------------------|---------------------------------------------------------------------------------------------------|
@@ -17,8 +17,8 @@ This project outlines the development of a C++ based simulation tool for maze pa
 
 ## 🔬 Scope and Limitations
 
-- **Scope**: The project covers the development of a generic map representation and the implementation of pathfinding algorithms.
-- **Limitations**: The simulation is limited to predefined maps and will not account for real-time changes in the environment.
+- **Scope✅**: The project covers the development of a generic map representation and the implementation of pathfinding algorithms.
+- **Limitations❌**: The simulation is limited to predefined maps and will not account for real-time changes in the environment.
 
 ## 👀 Features
 
@@ -66,11 +66,11 @@ This project outlines the development of a C++ based simulation tool for maze pa
   ![maze5](https://github.com/user-attachments/assets/0d18e2d8-1897-4949-be41-f44712bf42a9)
 
 ## 🎞 Project Output Simulation
-- DEPTH FIRST SEARCH:
+- ▶️ DEPTH FIRST SEARCH:
 
     https://github.com/user-attachments/assets/ee8733d5-6f3a-4f62-84a0-104e0fe9c4e5
 
-- BREADTH FIRST SEARCH:
+- ▶️ BREADTH FIRST SEARCH:
  
     https://github.com/user-attachments/assets/e47d734d-6f49-43ab-86c7-5074405b0db4
 
@@ -115,13 +115,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤍 Acknowledgements
 
-- Subject Instructor: Ms. Fatima Marie P. Agdon
+- Subject Instructor: Ms. Fatima Marie P. Agdon🥰
 
 ## ⌨️ Authors
 
-| Name                          | GitHub                                                | SR Code     |
-|-------------------------------|-------------------------------------------------------|-------------|
-| Antenor, Justine              | [Tiiinnn](https://github.com/Tiiinnn)                 | 23-05942    |
-| Bunqnuin, Theodore Von Joshua | [BunquinTheodore](https://github.com/BunquinTheodore) | 23-03102    |
-| Saludo, Noel Zyrence          | [NoelSaludo](https://github.com/NoelSaludo)           | 23-08992    |
-| Soriano, Albert JR            | [Soriano-San](https://github.com/Soriano-San)         | 23-03104    |
+| Name                             | GitHub                                                | SR Code     |
+|----------------------------------|-------------------------------------------------------|-------------|
+| 👨‍🎓 Antenor, Justine              | [Tiiinnn](https://github.com/Tiiinnn)                 | 23-05942    |
+| 👨‍🎓 Bunqnuin, Theodore Von Joshua | [BunquinTheodore](https://github.com/BunquinTheodore) | 23-03102    |
+| 👨‍🎓 Saludo, Noel Zyrence          | [NoelSaludo](https://github.com/NoelSaludo)           | 23-08992    |
+| 👨‍🎓 Soriano, Albert JR            | [Soriano-San](https://github.com/Soriano-San)         | 23-03104    |
