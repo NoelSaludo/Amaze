@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         bool isTraverse = false;
         bool isSolved = false, start = false;
         auto edgeList = solution.maze->EdgeList;
-        int cellSizeY = 80, cellSizeX = 80, winX, winY;
+        int cellSizeY = 80, cellSizeX = 80;
         int size = sqrt(solution.maze->Data.size());
 
 
