@@ -2,7 +2,7 @@
 https://github.com/user-attachments/assets/68c82fc8-6348-4cb3-9f7d-08ad28212dcc
 
 
-# MAZE SOLVER SIMULATION
+# 𝐌𝐀𝐙𝐄 𝐒𝐎𝐋𝐕𝐄𝐑 𝐒𝐈𝐌𝐔𝐋𝐀𝐓𝐈𝐎𝐍
 
 ## 🎯 Introduction 
 This project outlines the development of a C++ based simulation tool for maze pathfinding. The simulation enables users to learn how basic pathfinding works using graphs. This project aims to educate users on basic graph traversal and pathfinding algorithms, providing a hands-on learning experience📚.
