@@ -65,6 +65,15 @@ This project outlines the development of a C++ based simulation tool for maze pa
 
   ![maze5](https://github.com/user-attachments/assets/0d18e2d8-1897-4949-be41-f44712bf42a9)
 
+### Project Output Simulation
+- DEPTH FIRST SEARCH:
+
+    https://github.com/user-attachments/assets/ee8733d5-6f3a-4f62-84a0-104e0fe9c4e5
+
+- BREADTH FIRST SEARCH:
+ 
+    https://github.com/user-attachments/assets/e47d734d-6f49-43ab-86c7-5074405b0db4
+
 ## 🔧 Installation Instructions
 
 1. Clone the repository: 
