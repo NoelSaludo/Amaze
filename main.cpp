@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
         int cellSizeY = 80, cellSizeX = 80, winX, winY;
         int size = sqrt(solution.maze->Data.size());
 
-        CLITERAL(Color) bgBanner = {255,255,255,255};
 
         InitWindow(cellSizeX*size, cellSizeY*size, "Maze Solver");
         SetTargetFPS(60);
@@ -125,12 +124,12 @@ int main(int argc, char *argv[])
                                 }
                             }
                         }
-                        DrawText(TextFormat("%d", maze[i][j]), posx + cellSizeX / 2 - 10, posy + cellSizeY / 2 - 10, 20, BLACK);
+                        // DrawText(TextFormat("%d", maze[i][j]), posx + cellSizeX / 2 - 10, posy + cellSizeY / 2 - 10, 20, BLACK);
                         if (isSolved)
                         {
-                            DrawRectangle(10, 10, 150, 50, bgBanner);
+                            DrawText("Time taken: ", 10, 120, 30, RED);
+                            DrawText(TextFormat("%d microseconds", solution.timeTaken), 200, 120, 30, RED);
                             DrawText("Solved", 10, 10, 30, RED);
-                            DrawRectangle(10, 70, 390, 50, bgBanner);
                             DrawText("Press Escape to restart", 10, 70, 30, RED);
                         }
                     }

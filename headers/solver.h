@@ -11,6 +11,7 @@ typedef struct{
     int end;
     std::vector<int> Result;
     Graph *maze;
+    long long timeTaken;
 }paths;
 
 std::vector<int> Solve(std::vector<int> data, int end);
