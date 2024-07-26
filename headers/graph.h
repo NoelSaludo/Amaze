@@ -1,9 +1,11 @@
 #include <string>
 #include <vector>
 #include <utility>
-
 #ifndef GRAPH_H_
 #define GRAPH_H_
+
+#include <string>
+#include <vector>
 
 class Graph
 {
@@ -37,4 +39,5 @@ class Graph
         void PlotEdge(int,int);
         void ReadLines(std::vector<std::string>);
 };
+
 #endif

@@ -19,14 +19,11 @@ paths DFS(const Graph &graph)
     paths result;
     result.traverseList = path;
 
-    auto start = chrono::high_resolution_clock::now();
     vector<int> resultpath = Solve(prev, endIndex);
-    auto end = chrono::high_resolution_clock::now();
 
     result.Result = resultpath;
     result.start = startIndex;
     result.end = endIndex;
-    // result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     
 
     return result;
@@ -49,7 +46,4 @@ void DFSutil(Graph graph, int start, vector<bool>& visited, int size, vector<int
         }
     }
 
-    if (!flag) { // If no path to end node found from this node, backtrack
-        path.pop_back();
-    }
 }

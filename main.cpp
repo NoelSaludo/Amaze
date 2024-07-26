@@ -1,16 +1,11 @@
-#include "headers/global.h"
+#include "global.h"
+#include <raylib.h>
 
 using namespace std;
 
-void displayAllMazes(const vector<string> &);
-int getUserChoice(const string &, int);
-Graph loadMaze(const string &);
-void printPath(const paths &);
+vector<vector<int>> convertTo2D(const vector<string> &originalArray);
 
-const int screenWidth = 800;
-const int screenHeight = 450;
-
-int main()
+int main(int argc, char *argv[])
 {
     vector<string> mazeFiles = 
     {"../resources/maze1.txt",
@@ -50,7 +45,6 @@ int main()
     display.MazeSimulate(800,450);
 
     return 0;
-    
 }
 
 Graph loadMaze(const string &filename)
@@ -62,16 +56,15 @@ Graph loadMaze(const string &filename)
         exit(EXIT_FAILURE);
     }
 
-    string line;
-    string mazeData;
-    while (getline(file, line))
+    for (int i = 0; i < length; ++i)
     {
-        mazeData += line + "\n";
+        int row = i / n;
+        int col = i % n;
+        twoDArray[row][col] = i;
     }
-    file.close();
-
     Graph maze(mazeData); // Create a Graph object with the maze data
     return maze;
 }
 
 //debug mo yung other mazes, tingin ko nasa variables lang problem
+

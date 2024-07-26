@@ -92,6 +92,7 @@ paths startMazeSolver(vector<Graph> &mazes)
             int mazeChoice;
             cout << "----------------------------------------------" << endl;
             cout << "| Select a maze to solve (1-" << mazes.size() << "): |" << endl;
+
             cout << "----------------------------------------------" << endl;
             cout << "Enter choice: ";
             cin >> mazeChoice;
@@ -101,6 +102,7 @@ paths startMazeSolver(vector<Graph> &mazes)
                 cout << "----------------------------------------------" << endl;
                 cout << "| Invalid maze choice.                       |" << endl;
                 cout << "----------------------------------------------" << endl;
+                cin.ignore(2);
                 break;
             }
             selectedMaze = &mazes[mazeChoice - 1];
@@ -116,20 +118,22 @@ paths startMazeSolver(vector<Graph> &mazes)
                 auto start = chrono::high_resolution_clock::now();
                 solution = DFS(*selectedMaze);
                 auto end = chrono::high_resolution_clock::now();
-                timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+                solution.timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
             }
             else if (solveChoice == 2)
             {
                 auto start = chrono::high_resolution_clock::now();
                 solution = BFS(*selectedMaze);
                 auto end = chrono::high_resolution_clock::now();
-                timeTaken = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+
+                solution.timeTaken = chrono::duration_cast<chrono::microseconds>(end - start).count();
             }
             else
             {
                 cout << "----------------------------------------------" << endl;
                 cout << "| Invalid choice.                            |" << endl;
                 cout << "----------------------------------------------" << endl;
+                cin.ignore(2);
                 break;
             }
             cout << "----------------------------------------------" << endl;
@@ -139,13 +143,15 @@ paths startMazeSolver(vector<Graph> &mazes)
                 cout << node << " ";
             }
             cout << "\n";
-            cout << "| Time taken: " << timeTaken << " ms               |" << endl;
+            cout << "| Time taken: " << solution.timeTaken << " microseconds              |" << endl;
             cout << "----------------------------------------------" << endl;
             solution.maze = selectedMaze;
             return solution;
             break;
         case 2:
             displayAllMazes(mazes);
+            cout << "Press enter to continue...";
+            cin.ignore(2);
             break;
         case 3:
             cout << "----------------------------------------------" << endl;
@@ -157,6 +163,7 @@ paths startMazeSolver(vector<Graph> &mazes)
             cout << "----------------------------------------------" << endl;
             cout << "| Invalid choice.                            |" << endl;
             cout << "----------------------------------------------" << endl;
+            cin.ignore(2);
             break;
         }
     }

@@ -21,5 +21,3 @@
 #include "solver.h"
 #include "display.h"
 
-
-

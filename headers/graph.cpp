@@ -34,12 +34,12 @@ void Graph::AddEdge(int x, int y)
     }
 }
 
+
 void Graph::PlotEdge(int x, int y)
 {
 this->Edges.push_back(std::pair<int,int>(x,y));
 // cout << "PUSH BACK ("<<x<<","<<y<<")\n";
 }
-
 
 void Graph::LoadGraph(string &file)
 {
@@ -75,7 +75,6 @@ void Graph::LoadGraph(string &file)
     //kunwari select - userhcoice, for (4 maze4), passa mo yung var from graph to display, sabay gawa ka ng func sa display na SetDetails (int x, y vector<pair,pair>)
 }
 
-
 void Graph::ReadLines(vector<string> lines)
 {
     for (int i = 0; i < lines.size(); i++)
@@ -98,11 +97,10 @@ void Graph::ReadLines(vector<string> lines)
         }
         if (lines[i] == "#edge")
         {
-            
             this->loadMatrixTemp();
             for (int j = i + 1; j < lines.size(); j++)
             {
-                if(lines[j] == "#start")
+                if (lines[j] == "#start")
                     break;
                 string line = lines[j];
                 int commaIndex = line.find(",");
@@ -110,28 +108,29 @@ void Graph::ReadLines(vector<string> lines)
                 {
                     int x = stoi(line.substr(0, commaIndex));
                     int y = stoi(line.substr(commaIndex + 1));
-                    
+
+                    this->EdgeList.push_back(make_pair(x, y));
+
                     this->AddEdge(x, y);
                     this->PlotEdge(x,y);
                 }
-                catch(const std::exception& e)
+                catch (const std::exception &e)
                 {
                     std::cerr << e.what() << '\n';
                 }
-                
             }
         }
-        if(lines[i] == "#start")
+        if (lines[i] == "#start")
         {
-            string start = lines[i+1];
+            string start = lines[i + 1];
             this->Start = find(Data.begin(), Data.end(), start) - Data.begin();
 
             // cout << "start is: " << Start << "\n";
             this->TileStart = Start;
         }
-        if(lines[i] == "#end")
+        if (lines[i] == "#end")
         {
-            string end = lines[i+1];
+            string end = lines[i + 1];
             this->End = find(Data.begin(), Data.end(), end) - Data.begin();
 
             // cout << "end is: " << End << '\n';
@@ -140,6 +139,7 @@ void Graph::ReadLines(vector<string> lines)
         }
     }
 }
+
 void Graph::loadMatrixTemp()
 {
     for (int i = 0; i < size; i++)
@@ -152,7 +152,8 @@ void Graph::loadMatrixTemp()
         Matrix.push_back(temp);
     }
 }
-void Graph::PrintGraph()
+
+void Graph::PrintGraph() const // Add const here
 {
     cout << "  ";
     for (int i = 0; i < size; i++)
@@ -174,5 +175,4 @@ void Graph::PrintGraph()
 int Graph::GetSize() const
 {
     return size;
-    
 }
