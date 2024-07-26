@@ -24,17 +24,15 @@ add_subdirectory(headers)
 
 set(SOURCE main.cpp)
 
-set(MAZE_DATA 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze1.txt 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze2.txt 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze3.txt 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze4.txt 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze5.txt 
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze6.txt
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze7.txt
+set(MAZE_DATA
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze1.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze2.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze3.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze4.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze5.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze6.maze
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/maze7.maze
         )
-file(COPY ${MAZE_DATA}
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(
   Amaze 

@@ -11,13 +11,13 @@ int main(int argc, char *argv[])
     {
         if(system("clear")) system("cls");
         vector<Graph> mazes{
-            Graph("../resources/maze1.txt"),
-            Graph("../resources/maze2.txt"),
-            Graph("../resources/maze3.txt"),
-            Graph("../resources/maze4.txt"),
-            Graph("../resources/maze5.txt"),
-            Graph("../resources/maze6.txt"),
-            Graph("../resources/maze7.txt"),
+            Graph("../resources/maze1.maze"),
+            Graph("../resources/maze2.maze"),
+            Graph("../resources/maze3.maze"),
+            Graph("../resources/maze4.maze"),
+            Graph("../resources/maze5.maze"),
+            Graph("../resources/maze6.maze"),
+            Graph("../resources/maze7.maze"),
         };
 
         paths solution = startMazeSolver(mazes);
