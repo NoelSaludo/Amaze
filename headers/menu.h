@@ -1,18 +1,12 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef MENU_H_
+#define MENU_H_
 
-#include <iostream>
 #include <vector>
-#include <string>
+#include "graph.h"
 
-using namespace std;
-
-struct User {
-    string username;
-    string password;
-};
-
-void registerUser(vector<User>& users, const User& user);
-bool logIn(const vector<User>& users, const User& user);
-
-#endif // MENU_H
+void displayAllMazes(const std::vector<Graph>& mazes);
+int getUserChoice();
+paths startMazeSolver(std::vector<Graph>& mazes);
+void displayMainMenu();
+void checkCin();
+#endif

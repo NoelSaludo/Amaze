@@ -13,6 +13,7 @@
 #include <sstream>
 #include <cmath>
 #include <array>
+#include <cstdlib> 
 #include "graph.h"
 #include "DFS.h"
 #include "BFS.h"

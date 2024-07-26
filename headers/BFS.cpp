@@ -18,7 +18,7 @@ paths BFS(const Graph &g){
     vector<int> path = Solve(previousList,endIndex);
     auto end = chrono::high_resolution_clock::now();
 
-    result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    // result.time = chrono::duration_cast<chrono::milliseconds>(end - start).count();
     result.Result = path;
     return result;
 }
