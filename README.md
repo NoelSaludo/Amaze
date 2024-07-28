@@ -45,6 +45,7 @@ This project outlines the development of a C++ based simulation tool for maze pa
 
 ### Development Tools
 - `Visual Studio Code`
+- `Visual Studio BuildTools`
 - `Cmake`
 - `Ninja`
 
@@ -74,29 +75,33 @@ This project outlines the development of a C++ based simulation tool for maze pa
  
     https://github.com/user-attachments/assets/e47d734d-6f49-43ab-86c7-5074405b0db4
 
-## 🔧 Installation Instructions
+## 🔧 Building from Source
+
+
+Pre-requisites
+- cmake ([cmake.org](https://cmake.org/))
+- cl.exe ([MSVC](https://visualstudio.microsoft.com/downloads/?q=build+tools)) or gcc.exe ([MSYS2](https://www.msys2.org/) or [Conan](https://conan.io/))
+- Ninja (Reccomended)(can be installed using MSYS or Conan)
 
 1. Clone the repository: 
     ```bash
-    git clone https://github.com/your-repo/maze-solver-simulation.git
+    git clone https://github.com/your-repo/Amaze.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd maze-solver-simulation
+    cd amaze
     ```
 3. Build the project:
     ```bash
-    mkdir build
-    cd build
-    cmake ..
-    ninja
+    mkdir build && cd build
+    cmake -GNinja .. && cmake --build .
     ```
 
 ## 🚀 Usage Instructions
 
 1. Run the executable:
     ```bash
-    ./maze-solver
+    ./path/to/Amaze/build/Amaze
     ```
 2. Follow the on-screen instructions to load or create a maze.
 3. Select the pathfinding algorithm to use and visualize the pathfinding process.
@@ -106,12 +111,6 @@ This project outlines the development of a C++ based simulation tool for maze pa
 - **Dijkstra Algorithm**: Finds the shortest path between nodes in a graph.
 - **Depth First Search (DFS)**: Explores as far as possible along each branch before backtracking.
 - **Breadth First Search (BFS)**: Explores all nodes at the present depth level before moving on to nodes at the next depth level.
-
-
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🤍 Acknowledgements
 
